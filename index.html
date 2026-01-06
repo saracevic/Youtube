@@ -456,18 +456,89 @@
             font-size: 0.9em;
         }
         
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            . button-group, .btn-download {
-                display: none;
-            }
-        }
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    .button-group, .btn-download {
+        display: none;
+    }
+}
+
+/* Müzik Kontrol Butonu */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.music-control:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+}
+
+.music-control button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    padding: 0;
+}
+
+.music-control button:hover {
+    transform: scale(1.1);
+}
+
+.music-control input[type="range"] {
+    width: 80px;
+    height: 6px;
+    border-radius: 5px;
+    background: #e0e0e0;
+    outline: none;
+}
+
+.music-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body>
+    <!-- Müzik Kontrolü -->
+    <div class="music-control" id="musicControl">
+        <button onclick="toggleMusic()" id="musicBtn" title="Müzik aç/kapat">
+            <span id="musicIcon">🔇</span>
+        </button>
+        <input type="range" min="0" max="100" value="30" id="volumeSlider" onchange="changeVolume(this.value)">
+    </div>
+    
+    <audio id="backgroundMusic" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_d1718372d8.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="container">
         <div class="header">
             <h1>🎓 YouTube İçerik Üretimi Akademisi</h1>
@@ -2428,8 +2499,61 @@
             }
         });
         
-        // İlk yükleme
+// İlk yükleme
         updateProgress();
+        
+        // ========== MÜZİK KONTROL FONKSİYONLARI ==========
+        let musicPlaying = false;
+        const bgMusic = document.getElementById('backgroundMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        
+        // Sayfa yüklendiğinde müzik ayarlarını kontrol et
+        function initMusic() {
+            const savedMusicState = localStorage.getItem('musicEnabled');
+            const savedVolume = localStorage.getItem('musicVolume') || 30;
+            
+            if (savedMusicState === 'true') {
+                document.getElementById('volumeSlider').value = savedVolume;
+                bgMusic.volume = savedVolume / 100;
+            } else {
+                bgMusic.volume = 0.3;
+            }
+        }
+        
+        // Müzik aç/kapat
+        function toggleMusic() {
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicIcon.textContent = '🔇';
+                musicPlaying = false;
+                localStorage.setItem('musicEnabled', 'false');
+            } else {
+                bgMusic.play().catch(function(error) {
+                    console.log('Müzik oynatılamadı:', error);
+                    alert('🎵 Müziği başlatmak için lütfen butona tekrar tıklayın!');
+                });
+                musicIcon.textContent = '🔊';
+                musicPlaying = true;
+                localStorage.setItem('musicEnabled', 'true');
+            }
+        }
+        
+        // Ses seviyesi değiştir
+        function changeVolume(value) {
+            bgMusic.volume = value / 100;
+            localStorage.setItem('musicVolume', value);
+            
+            if (value == 0) {
+                musicIcon.textContent = '🔇';
+            } else if (value < 50) {
+                musicIcon.textContent = '🔉';
+            } else {
+                musicIcon.textContent = '🔊';
+            }
+        }
+        
+        // Sayfa yüklendiğinde müziği başlat
+        initMusic();
     </script>
 </body>
 </html>
