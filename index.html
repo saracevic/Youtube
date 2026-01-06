@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube İçerik Üretimi Rehberi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #FF0000;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF0000, #FF6B6B);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .step-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .step-title {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        
+        .content-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .content-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .tip-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .tip-box strong {
+            color: #856404;
+        }
+        
+        .app-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .app-card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .app-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .checklist li:hover {
+            background: #e8f5e9;
+            transform: translateX(5px);
+        }
+        
+        .checklist li.checked {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .btn-prev {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex: 1;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        
+        .final-message {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .final-message h2 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .final-message p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 YouTube İçerik Üretimi Rehberi</h1>
+        <p class="subtitle">iPad Mini ile Profesyonel Videolar Yapmanın Sırları</p>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+        
+        <!-- Adım 1: Hazırlık -->
+        <div class="step active" data-step="1">
+            <div class="step-header">
+                <div class="step-number">ADIM 1 / 7</div>
+                <div class="step-title">📱 Başlamadan Önce Hazırlık</div>
+            </div>
+            
+            <div class="content-box">
+                <h3>🎯 iPad Mini'ni Hazırla</h3>
+                <ul class="checklist" id="checklist1">
+                    <li onclick="toggleCheck(this)">iPad'imin şarjı en az %50 dolu</li>
+                    <li onclick="toggleCheck(this)">iPad'imde yeterli depolama alanı var (en az 5-10 GB boş)</li>
+                    <li onclick="toggleCheck(this)">İnternet bağlantım çalışıyor</li>
+                    <li onclick="toggleCheck(this)">Çekim yapacağım ortam aydınlık</li>
+                </ul>
+            </div>
+            
+            <div class="content-box">
+                <h3>💡 İhtiyacın Olabilecek Ekstra Şeyler</h3>
+                <p><strong>Zorunlu değil ama işini kolaylaştırır:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+                    <li>iPad için üçayak veya telefon tutucu (sabit çekim için)</li>
+                    <li>Kulaklık (ses kontrolü için)</li>
+                    <li>Temiz bir arka plan (videonda güzel görünmesi için)</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 İPUCU:</strong> İlk videonu çekmeden önce birkaç deneme çekimi yap. Bu sana güven verecek ve neleri düzeltmen gerektiğini gösterecek!
+            </div>
+        </div>
+        
+        <!-- Adım 2: Video Fikri -->
+        <div class="step" data-step="2">
+            <div class="step-header">
+                <div class="step-number">ADIM 2 / 7</div>
+                <div class="step-title">💡 Video Fikri Bul</div>
+            </div>
+            
+            <div class="content-box">
+                <h3>🎨 Hangi Tür Video Yapmak İstersin?</h3>
+                <p style="margin-bottom: 15px;">Popüler video türleri:</p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Oyun videoları:</strong> Minecraft, Among Us gibi oyunları oynarken ekran kaydı</li>
+                    <li><strong>Eğitici videolar:</strong> Bir şey öğretmek (çizim, origami, matematik)</li>
+                    <li><strong>Vlog:</strong> Günlük hayatından kesitler paylaşmak</li>
+                    <li><strong>Challenge videoları:</strong> Eğlenceli görevler (zorlu bulmaca çözme)</li>
+                    <li><strong>Yetenek gösterisi:</strong> Müzik, dans, resim gibi yeteneklerini göster</li>
+                    <li><strong>İnceleme videoları:</strong> Kitap, oyuncak veya ürün tanıtımı</li>
+                </ul>
+            </div>
+            
+            <div class="content-box">
+                <h3>📝 Video Planını Yap</h3>
+                <p>Bir videoda şunlar olmalı:</p>
+                <ul style="margin-left: 20px; line-height: 2; margin-top: 10px;">
+                    <li><strong>Giriş (5-10 saniye):</strong> "Merhaba ben [ismin], bugün..."</li>
+                    <li><strong>Ana içerik:</strong> Videonda anlatacağın şey</li>
+                    <li><strong>Kapanış (5-10 saniye):</strong> "Beğendiyseniz beğen butonuna tıklayın, abone olun!"</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 İPUCU:</strong> İlk videolarını kısa tut! 3-5 dakikalık videolar yapmak daha kolay. Deneyim kazandıkça daha uzun videolar yapabilirsin.
+            </div>
+        </div>
+        
+        <!-- Adım 3: Video Çekimi -->
+        <div class="step" data-step="3">
+            <div class="step-header">
+                <div class="step-number">ADIM 3 / 7</div>
+                <div class="step-title">🎥 Video Çekimi</div>
+            </div>
+            
+            <div class="content-box">
+                <h3>📐 Doğru Açıyla Çekim Yapmak</h3>
+                <p><strong>iPad'i nasıl tutmalısın?</strong></p>
+                <ul style="margin-left: 20px; line-height: 2; margin-top: 10px;">
+                    <li><strong>Yatay (Landscape):</strong> iPad'i yan çevir - YouTube için en uygun format</li>
+                    <li><strong>Göz hizasında:</strong> Kamerayı yüzünle aynı hizada tut</li>
+                    <li><strong>Sabit tut:</strong> Sallanmayan videolar daha profesyonel görünür</li>
+                    <li><strong>Mesafe:</strong> Çok yakın veya çok uzak olma, göğsünden yukarısı görünsün</li>
+                </ul>
+            </div>
+            
+            <div class="content-box">
+                <h3>💡 Aydınlatma İpuçları</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Yüzün aydınlık ortamda olsun</li>
+                    <li>Işık arkanızda değil, önünüzde olsun</li>
+                    <li>Gün ışığı en iyi aydınlatmadır (pencere önünde çekim yap)</li>
+                    <li>Akşam çekim yapıyorsan odanın ışığını aç</li>
+                </ul>
+            </div>
+            
+            <div class="content-box">
+                <h3>🎤 Ses Kalitesi</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Sessiz bir ortamda çekim yap (TV, müzik kapalı olsun)</li>
+                    <li>Kameraya yakın konuş ama bağırma</li>
+                    <li>Net ve anlaşılır konuş</li>
+                    <li>Deneme çekimleri yap ve sesini kontrol et</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 İPUCU:</strong> iPad'in kamera uygulamasını kullanabilirsin veya daha gelişmiş özellikler için "FiLMiC Pro" gibi uygulamaları deneyebilirsin. İlk başta basit kamera uygulaması yeterli!
+            </div>
+        </div>
+        
+        <!-- Adım 4: Video Düzenleme -->
+        <div class="step" data-step="4">
+            <div class="step-header">
+                <div class="step-number">ADIM 4 / 7</div>
+                <div class="step-title">✂️ Video Düzenleme (Edit)</div>
+            </div>
+            
+            <div class="content-box">
+                <h3>📱 iPad Mini için En İyi Düzenleme Uygulamaları</h3>
+                <div class="app-list">
+                    <div class="app-card">
+                        <h4>iMovie</h4>
+                        <p>✅ ÜCRETSİZ<br>Apple'ın kendi uygulaması. Başlangıç için mükemmel!</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>CapCut</h4>
+                        <p>✅ ÜCRETSİZ<br>Çok popüler, kolay kullanım, harika efektler</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>InShot</h4>
+                        <p>✅ ÜCRETSİZ<br>Basit arayüz, müzik ekleme çok kolay</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>KineMaster</h4>
+                        <p>⭐ Gelişmiş<br>Daha profesyonel özellikler (kısmi ücretli)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-box">
+                <h3>🎬 Temel Düzenleme Adımları</h3>
+                <p><strong>Her edit programında yapacağın şeyler:</strong></p>
+                <ol style="margin-left: 20px; line-height: 2.5; margin-top: 10px;">
+                    <li><strong>Videoyu içe aktar:</strong> Çektiğin videoyu uygulamaya yükle</li>
+                    <li><strong>Gereksiz kısımları kes:</strong> Başındaki ve sonundaki boş anları sil</li>
+                    <li><strong>Hataları çıkar:</strong> Yanlış konuştuğun veya durduğun yerleri kes</li>
+                    <li><strong>Müzik ekle:</strong> Arka plan müziği koy (çok yüksek olmasın)</li>
+                    <li><strong>Yazı ekle:</strong> Önemli yerlere yazı koy (başlık, isim)</li>
+                    <li><strong>Geçişler ekle:</strong> Sahneler arası yumuşak geçişler</li>
+                    <li><strong>Filtre/Renk düzelt:</strong> Videonun rengini daha canlı yap</li>
+                </ol>
+            </div>
+            
+            <div class="content-box">
+                <h3>🎨 Efekt ve Özellikler</h3>
+                <p><strong>Videonu daha eğlenceli yapacak şeyler:</strong></p>
+                <ul style="margin-left: 20px; line-height: 2; margin-top: 10px;">
+                    <li><strong>Ses efektleri:</strong> Alkış, davul sesi, komik sesler ekle</li>
+                    <li><strong>Hız ayarı:</strong> Bazı yerleri hızlandır (fast-forward) veya yavaşlat (slow-motion)</li>
+                    <li><strong>Zoom efekti:</strong> Önemli anları yakınlaştır</li>
+                    <li><strong>Sticker/emoji:</strong> Eğlenceli çıkartmalar ekle</li>
+                    <li><strong>Alt yazı:</strong> Söylediklerini yazıyla göster</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 İPUCU:</strong> İlk videolarında çok fazla efekt kullanma! Basit ve temiz videolar daha profesyonel görünür. Zamanla efekt kullanmayı öğrenirsin.
+            </div>
+        </div>
+        
+        <!-- Adım 5: Thumbnail -->
+        <div class="step" data-step="5">
+            <div class="step-header">
+                <div class="step-number">ADIM 5 / 7</div>
+                <div class="step-title">🖼️ Kapak Görseli (Thumbnail)</div>
+            </div>
+            
+            <div class="content-box">
+                <h3>🎯 Thumbnail Nedir ve Neden Önemli?</h3>
+                <p>Thumbnail, videonun ön kapağıdır. İnsanlar YouTube'da gördüğü ilk şey! Güzel thumbnail = Daha fazla tıklama</p>
+            </div>
+            
+            <div class="content-box">
+                <h3>🎨 İyi Bir Thumbnail Nasıl Olmalı?</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Net ve anlaşılır:</strong> Ne hakkında olduğu belli olmalı</li>
+                    <li><strong>Renkli:</strong> Canlı renkler dikkat çeker</li>
+                    <li><strong>Büyük yazı:</strong> Telefonda da okunabilecek büyüklükte</li>
+                    <li><strong>Yüz ifadesi:</strong> Gülümseme veya şaşkın ifade iyi sonuç verir</li>
+                    <li><strong>3-5 kelime max:</strong> Çok fazla yazı karmaşa yaratır</li>
+                </ul>
+            </div>
+            
+            <div class="content-box">
+                <h3>📱 Thumbnail Yapma Uygulamaları</h3>
+                <div class="app-list">
+                    <div class="app-card">
+                        <h4>Canva</h4>
+                        <p>✅ ÜCRETSİZ<br>Hazır şablonlar var, çok kolay</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>Phonto</h4>
+                        <p>✅ ÜCRETSİZ<br>Resme yazı eklemek için mükemmel</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>PicsArt</h4>
+                        <p>✅ ÜCRETSİZ<br>Efektli ve yaratıcı tasarımlar</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-box">
+                <h3>✨ Thumbnail Yapma Adımları</h3>
+                <ol style="margin-left: 20px; line-height: 2.5; margin-top: 10px;">
+                    <li>Videodan iyi bir kare seç veya özel fotoğraf çek</li>
+                    <li>Canva'da "YouTube Thumbnail" şablonunu seç (1280x720 piksel)</li>
+                    <li>Fotoğrafını yükle</li>
+                    <li>Büyük ve renkli yazı ekle (videonun konusu)</li>
+                    <li>İstersen ok, emoji veya çerçeve ekle</li>
+                    <li>Kaydet ve iPad'ine indir</li>
+                </ol>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 İPUCU:</strong> Popüler YouTuber'ların thumbnail'lerini incele. Hangi renkleri kullanıyorlar? Yazıları nasıl yerleştiriyorlar? Onlardan ilham al!
+            </div>
+        </div>
+        
+        <!-- Adım 6: YouTube'a Yükleme -->
+        <div class="step" data-step="6">
+            <div class="step-header">
+                <div class="step-number">ADIM 6 / 7</div>
+                <div class="step-title">⬆️ YouTube'a Yükleme</div>
+            </div>
+            
+            <div class="content-box">
+                <h3>📺 YouTube Kanalı Oluşturma</h3>
+                <p><strong>⚠️ ÖNEMLİ:</strong> YouTube kullanmak için 13 yaşında olman gerekiyor. Ebeveyn izni ve denetimi şart!</p>
+                <ol style="margin-left: 20px; line-height: 2.5; margin-top: 15px;">
+                    <li>YouTube uygulamasını aç</li>
+                    <li>Sağ üstteki profil resmine tıkla</li>
+                    <li>"Kanal oluştur" seçeneğini seç</li>
+                    <li>Kanal adını belirle (değiştirilebilir)</li>
+                    <li>Profil fotoğrafı ekle</li>
+                </ol>
+            </div>
+            
+            <div class="content-box">
+                <h3>📤 Video Yükleme Adımları</h3>
+                <ol style="margin-left: 20px; line-height: 2.5;">
+                    <li>YouTube uygulamasında "+" butonuna tıkla</li>
+                    <li>"Video yükle" seçeneğini seç</li>
+                    <li>Düzenlediğin videoyu seç</li>
+                    <li>Video yüklenirken bilgileri doldur:</li>
+                </ol>
+            </div>
+            
+            <div class="content-box">
+                <h3>✍️ Video Bilgilerini Doldurma</h3>
+                <p><strong>Başlık (Title):</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>İlgi çekici olmalı</li>
+                    <li>Video içeriğini anlatmalı</li>
+                    <li>40-60 karakter ideal</li>
+                    <li>Örnek: "Minecraft'ta Gizli Kapı Yapımı! 😱"</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Açıklama (Description):</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Video hakkında detaylı bilgi ver</li>
+                    <li>Kullandığın uygulamaları yaz</li>
+                    <li>"Abone olmayı unutmayın!" gibi çağrılar ekle</li>
+                    <li>İlgili hashtag'ler ekle (#minecraft #tutorial)</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Thumbnail:</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>"Özel thumbnail ekle" butonuna tıkla</li>
+                    <li>Hazırladığın kapak görselini yükle</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Gizlilik Ayarları:</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Genel:</strong> Herkes görebilir</li>
+                    <li><strong>Gizli:</strong> Linki olanlar görebilir (test için ideal)</li>
+                    <li><strong>Özel:</strong> Sadece sen görebilirsin</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 İPUCU:</strong> İlk videonu "Gizli" olarak yükle! Ailenle birlikte izleyin ve sorun yoksa "Genel" yap. Bu şekilde hataları düzeltme şansın olur.
+            </div>
+        </div>
+        
+        <!-- Adım 7: Kanal Büyütme -->
+        <div class="step" data-step="7">
+            <div class="step-header">
+                <div class="step-number">ADIM 7 / 7</div>
+                <div class="step-title">📈 Kanalını Büyütme İpuçları</div>
+            </div>
+            
+            <div class="content-box">
+                <h3>🎯 Abone ve İzlenme Artırma</h3>
+                <p><strong>Düzenli İçerik Üret:</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Haftada 1-2 video at (düzenlilik çok önemli)</li>
+                    <li>Aynı günlerde video paylaş (örnek: her Cumartesi)</li>
+                    <li>İzleyiciler ne zaman video geleceğini bilsin</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Kaliteli İçerik Yap:</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Ses ve görüntü kalitesine dikkat et</li>
+                    <li>İlginç konular seç</li>
+                    <li>Eğlenceli ve enerjik ol</li>
+                    <li>Videoların 5-10 dakika olsun (çok uzun olmasın)</li>
+                </ul>
+            </div>
+            
+            <div class="content-box">
+                <h3>💬 İzleyicilerle İletişim</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Yorumları oku ve yanıtla:</strong> İnsanlar senle iletişime geçmekten hoşlanır</li>
+                    <li><strong>Soru sor:</strong> Video sonunda "sizce ne yapmalıyım?" gibi sorular sor</li>
+                    <li><strong>Teşekkür et:</strong> Her videoda izleyicilere teşekkür et</li>
+                    <li><strong>İstek al:</strong> "Hangi videoyu görmek istersiniz?" diye sor</li>
+                </ul>
+            </div>
+            
+            <div class="content-box">
+                <h3>🔍 YouTube SEO (Aranabilirlik)</h3>
+                <p>Videolarının daha kolay bulunması için:</p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Anahtar kelimeler:</strong> Başlığa önemli kelimeleri koy</li>
+                    <li><strong>Hashtag kullan:</strong> #minecraft #tutorial gibi etiketler ekle</li>
+                    <li><strong>Açıklama doldur:</strong> Video hakkında detaylı bilgi ver</li>
+                    <li><strong>Oynatma listeleri:</strong> Benzer videoları bir araya topla</li>
+                </ul>
+            </div>
+            
+            <div class="content-box">
+                <h3>💰 Para Kazanma Hakkında</h3>
+                <p><strong>YouTube'dan para kazanmak için gereken şartlar:</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>En az 1.000 abone</li>
+                    <li>Son 12 ayda 4.000 saat izlenme</li>
+                    <li>18 yaşından büyük olmak (veya ebeveyn hesabı)</li>
+                    <li>YouTube Ortak Programı'na başvuru</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>💡 Şimdilik:</strong> Para kazanmayı düşünme! İlk hedefin kaliteli içerik üretmek ve eğlenmek olsun. Başarı gelirse para da gelir.</p>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 EN ÖNEMLİ İPUCU:</strong> Sabırlı ol! Hiçbir YouTuber bir gecede ünlü olmadı. Düzenli video at, kendini geliştir ve vazgeçme. Her video bir öncekinden daha iyi olacak!
+            </div>
+            
+            <div class="final-message">
+                <h2>🎉 Tebrikler!</h2>
+                <p>Artık YouTube içerik üreticisi olmanın tüm adımlarını öğrendin!<br><br>
+                Unutma: En önemli şey eğlenmek ve yaratıcı olmak.<br>
+                İlk videonu çekmeye başla ve deneyim kazan!<br><br>
+                <strong>Başarılar! 🚀</strong></p>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-prev" onclick="prevStep()" id="prevBtn">⬅️ Önceki</button>
+            <button class="btn-next" onclick="nextStep()" id="nextBtn">Sonraki ➡️</button>
+        </div>
+    </div>
+    
+    <script>
+        let currentStep = 1;
+        const totalSteps = 7;
+        
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+        
+        function showStep(step) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.querySelector(`[data-step="${step}"]`).classList.add('active');
+            
+            document.getElementById('prevBtn').disabled = step === 1;
+            
+            if (step === totalSteps) {
+                document.getElementById('nextBtn').textContent = '🏁 Tamamla';
+            } else {
+                document.getElementById('nextBtn').textContent = 'Sonraki ➡️';
+            }
+            
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                alert('🎉 Tebrikler! Rehberi tamamladın! Artık ilk videonuzu çekmeye hazırsınız!');
+            }
+        }
+        
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+        
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+        }
+        
+        updateProgress();
+    </script>
+</body>
+</html>
