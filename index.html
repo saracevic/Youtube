@@ -1,19 +1,19 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚀 YouTube Pro Academy - AI Destekli İçerik Üretimi Rehberi</title>
+    <title>YouTube İçerik Üretimi Akademisi</title>
     <style>
         * {
-            margin: 0;
+            margin:  0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing:  border-box;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:  linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 20px;
             min-height: 100vh;
         }
@@ -23,78 +23,49 @@
             margin: 0 auto;
             background: white;
             border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            box-shadow:  0 20px 60px rgba(0,0,0,0.3);
         }
         
-        h1 {
-            background: linear-gradient(135deg, #FF0000, #FF6B6B);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .header {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom:  3px solid #667eea;
+        }
+        
+        .header h1 {
+            color: #FF0000;
             font-size:  2.5em;
-            animation: pulse 2s infinite;
+            margin-bottom: 10px;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-        
-        .subtitle {
-            text-align: center;
+        .header . subtitle {
             color: #666;
-            margin-bottom: 20px;
-            font-size:  1.2em;
+            font-size: 1.2em;
         }
         
-        .badge-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom:  30px;
-            flex-wrap: wrap;
-        }
-        
-        .badge {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 8px 20px;
+            border-radius:  20px;
+            margin-top: 15px;
             font-weight: bold;
-            font-size: 0.9em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            animation: fadeInUp 0.5s ease;
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .progress-container {
             margin-bottom: 30px;
         }
         
-        .progress-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 0.9em;
-            color: #666;
-        }
-        
         .progress-bar {
             width: 100%;
-            height:  10px;
+            height: 10px;
             background: #e0e0e0;
             border-radius: 10px;
             overflow: hidden;
-            position: relative;
+            margin-bottom: 10px;
         }
         
         .progress-fill {
@@ -102,24 +73,12 @@
             background: linear-gradient(90deg, #FF0000, #FF6B6B);
             width: 0%;
             transition:  width 0.5s ease;
-            position: relative;
-            overflow: hidden;
         }
         
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top:  0;
-            left: 0;
-            bottom: 0;
-            right:  0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
         }
         
         .step {
@@ -132,29 +91,16 @@
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform:  translateY(20px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        . step-header {
+        .step-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 25px;
             border-radius:  15px;
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .step-header::before {
-            content: '';
-            position:  absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)"/></svg>');
-            opacity: 0.1;
+            margin-bottom: 30px;
         }
         
         .step-number {
@@ -163,150 +109,156 @@
             margin-bottom: 5px;
         }
         
-        . step-title {
+        .step-title {
             font-size: 2em;
-            font-weight:  bold;
-            position: relative;
-            z-index: 1;
+            font-weight: bold;
         }
         
-        .content-box {
+        .lesson-box {
             background: #f8f9fa;
             padding: 25px;
             border-radius:  15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-left: 5px solid #667eea;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .content-box:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .content-box h3 {
-            color: #667eea;
+        .lesson-box h3 {
+            color:  #667eea;
             margin-bottom: 15px;
-            font-size:  1.4em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.4em;
         }
         
-        .ai-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius:  15px;
-            margin:  20px 0;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-        
-        .ai-box h3 {
-            color: white;
+        .lesson-box p {
+            line-height: 1.8;
+            color: #333;
             margin-bottom: 15px;
-            font-size:  1.4em;
         }
         
-        .ai-buttons {
+        .lesson-box ul, .lesson-box ol {
+            margin-left: 25px;
+            line-height: 2;
+        }
+        
+        .selection-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin:  25px 0;
         }
         
-        .ai-btn {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 12px 20px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 10px;
+        .selection-card {
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 25px;
+            text-align:  center;
             cursor: pointer;
             transition: all 0.3s;
-            font-weight: bold;
-            text-decoration: none;
+            position: relative;
+        }
+        
+        .selection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+        
+        .selection-card.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .selection-card . icon {
+            font-size:  3em;
+            margin-bottom:  15px;
+        }
+        
+        .selection-card h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .selection-card p {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .selection-card. selected p,
+        .selection-card.selected h4 {
+            color:  white;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
             display: block;
-            text-align: center;
-        }
-        
-        .ai-btn:hover {
-            background:  rgba(255,255,255,0.3);
-            transform: translateY(-3px);
-            box-shadow:  0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .tip-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
-        }
-        
-        .tip-box strong {
-            color: #856404;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
             font-size: 1.1em;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        . form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        . info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196F3;
+            padding:  15px;
+            border-radius: 10px;
+            margin:  20px 0;
+        }
+        
+        .info-box strong {
+            color: #1565C0;
         }
         
         .warning-box {
-            background: #f8d7da;
-            border-left: 5px solid #dc3545;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            border-radius:  10px;
+            margin:  20px 0;
         }
         
         .warning-box strong {
-            color:  #721c24;
-            font-size: 1.1em;
+            color: #856404;
         }
         
         .success-box {
             background: #d4edda;
             border-left: 5px solid #28a745;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
-            margin: 15px 0;
+            margin: 20px 0;
         }
         
         .success-box strong {
             color:  #155724;
-            font-size: 1.1em;
-        }
-        
-        . app-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin:  20px 0;
-        }
-        
-        .app-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid #e0e0e0;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .app-card:hover {
-            transform:  translateY(-8px);
-            box-shadow:  0 8px 25px rgba(0,0,0,0.15);
-            border-color: #667eea;
-        }
-        
-        .app-card h4 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-        
-        .app-card . app-icon {
-            font-size: 3em;
-            margin-bottom:  10px;
         }
         
         .checklist {
@@ -324,84 +276,33 @@
             transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap:  10px;
         }
         
-        .checklist li:: before {
-            content: '☐';
+        .checklist li:before {
+            content: "☐";
             font-size: 1.5em;
+            margin-right:  15px;
             color: #28a745;
         }
         
-        .checklist li. checked:: before {
-            content: '☑';
+        .checklist li.checked:before {
+            content: "☑";
         }
         
         .checklist li:hover {
             background:  #e8f5e9;
-            transform: translateX(10px);
+            transform: translateX(5px);
         }
         
         .checklist li.checked {
             opacity: 0.6;
             text-decoration: line-through;
-            border-left-color: #6c757d;
         }
         
-        .interactive-tool {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid #667eea;
-            margin: 20px 0;
-        }
-        
-        .interactive-tool input,
-        .interactive-tool textarea,
-        .interactive-tool select {
-            width: 100%;
-            padding: 12px;
-            margin:  10px 0;
-            border:  2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1em;
-            font-family: inherit;
-        }
-        
-        .interactive-tool button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-            transition: all 0.3s;
-        }
-        
-        . interactive-tool button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-        
-        .result-box {
-            background: #e8f5e9;
-            padding: 15px;
-            border-radius:  8px;
-            margin-top: 15px;
-            display: none;
-        }
-        
-        .result-box.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        . button-group {
+        .button-group {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
+            margin-top: 40px;
             gap: 15px;
         }
         
@@ -426,985 +327,1437 @@
             flex:  1;
         }
         
+        .btn-download {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            width: 100%;
+            font-size: 1.3em;
+            padding: 20px;
+        }
+        
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
-        button: disabled {
+        button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
         }
         
-        .emoji {
-            font-size: 1.2em;
-            margin-right: 5px;
+        .data-summary {
+            background: #f8f9fa;
+            padding:  25px;
+            border-radius:  15px;
+            margin:  25px 0;
         }
         
-        .final-message {
-            text-align: center;
-            padding: 40px;
-        }
-        
-        .final-message h2 {
+        .data-summary h3 {
             color: #667eea;
-            font-size: 3em;
-            margin-bottom:  20px;
-            animation: bounce 1s infinite;
+            margin-bottom: 20px;
+            font-size:  1.5em;
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .data-item {
+            background: white;
+            padding: 15px;
+            border-radius:  8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
         }
         
-        .final-message p {
-            font-size:  1.2em;
-            color: #666;
-            line-height: 1.8;
+        .data-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
         }
         
-        .trend-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin:  15px 0;
+        .final-report {
+            text-align: center;
+            padding: 40px 20px;
         }
         
-        .trend-tag {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .final-report h2 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .final-report .certificate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding:  8px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: all 0.3s;
+            padding: 30px;
+            border-radius:  15px;
+            margin:  30px 0;
         }
         
-        .trend-tag:hover {
-            transform:  scale(1.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
         
-        .video-template {
+        .app-card {
             background: white;
             padding: 20px;
             border-radius: 12px;
-            border: 2px solid #e0e0e0;
-            margin: 15px 0;
-            cursor: pointer;
+            border:  2px solid #e0e0e0;
+            text-align: center;
             transition: all 0.3s;
         }
         
-        .video-template:hover {
+        .app-card:hover {
+            transform:  translateY(-3px);
+            box-shadow:  0 5px 15px rgba(0,0,0,0.1);
             border-color: #667eea;
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .video-template h4 {
+        . app-card . app-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .app-card h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .app-card . badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 3px 10px;
+            border-radius:  5px;
+            font-size:  0.8em;
+            margin:  5px 0;
+        }
+        
+        .example-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px dashed #667eea;
+            margin: 20px 0;
+        }
+        
+        .example-box h4 {
             color: #667eea;
             margin-bottom: 10px;
         }
         
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
+        .tag {
+            display: inline-block;
+            background: #e0e0e0;
+            padding: 5px 12px;
+            border-radius:  20px;
+            margin:  5px;
+            font-size: 0.9em;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
             }
-            
-            .step-title {
-                font-size: 1.5em;
-            }
-            
-            .badge-container {
-                font-size: 0.8em;
+            . button-group, .btn-download {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 YouTube Pro Academy</h1>
-        <p class="subtitle">🤖 Yapay Zeka Destekli - iPad Mini ile Profesyonel İçerik Üretimi</p>
-        
-        <div class="badge-container">
-            <div class="badge">
-                <span>🎓</span>
-                <span id="completedTasks">0/50 Görev</span>
-            </div>
-            <div class="badge">
-                <span>⭐</span>
-                <span id="earnedPoints">0 Puan</span>
-            </div>
-            <div class="badge">
-                <span>🏆</span>
-                <span id="badges">Yeni Başlayan</span>
-            </div>
+        <div class="header">
+            <h1>🎓 YouTube İçerik Üretimi Akademisi</h1>
+            <p class="subtitle">iPad Mini ile Profesyonel İçerik Üreticisi Ol</p>
+            <span class="badge">🎬 Kapsamlı Video Üretim Eğitimi</span>
         </div>
         
         <div class="progress-container">
-            <div class="progress-stats">
-                <span><strong>İlerleme:</strong> <span id="progressPercent">0%</span></span>
-                <span><strong>Adım:</strong> <span id="currentStepNum">1</span>/10</span>
-            </div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressBar"></div>
             </div>
+            <div class="progress-text" id="progressText">Ders 1 / 10</div>
         </div>
         
-        <!-- Adım 1: Hazırlık -->
+        <!-- DERS 1: Hoşgeldin -->
         <div class="step active" data-step="1">
             <div class="step-header">
-                <div class="step-number">ADIM 1 / 10</div>
-                <div class="step-title">📱 Başlamadan Önce Hazırlık</div>
+                <div class="step-number">DERS 1 / 10</div>
+                <div class="step-title">👋 Hoş Geldin!</div>
             </div>
             
-            <div class="content-box">
-                <h3>🎯 iPad Mini'ni Hazırla</h3>
-                <ul class="checklist" id="checklist1">
-                    <li onclick="toggleCheck(this)">iPad'imin şarjı en az %50 dolu</li>
-                    <li onclick="toggleCheck(this)">iPad'imde yeterli depolama alanı var (en az 5-10 GB boş)</li>
-                    <li onclick="toggleCheck(this)">İnternet bağlantım çalışıyor ve hızlı</li>
-                    <li onclick="toggleCheck(this)">Çekim yapacağım ortam aydınlık ve sessiz</li>
-                    <li onclick="toggleCheck(this)">YouTube uygulamasını indirdim</li>
+            <div class="lesson-box">
+                <h3>📚 Bu Akademide Ne Öğreneceksin?</h3>
+                <p>Merhaba! Bu eğitim programında, sıfırdan profesyonel bir YouTube içerik üreticisi olmayı öğreneceksin. Adım adım ilerleyeceğiz ve sonunda <strong>kendi video üretim planın</strong> hazır olacak! </p>
+                
+                <p><strong>Bu eğitimde:</strong></p>
+                <ul>
+                    <li>📹 Video çekiminin temel kurallarını öğreneceksin</li>
+                    <li>✂️ Profesyonel video düzenleme yapacaksın</li>
+                    <li>🎨 İlgi çekici thumbnail tasarlayacaksın</li>
+                    <li>📊 Kanalını büyütme stratejileri geliştireceksin</li>
+                    <li>📄 Kendi video projeni oluşturacaksın</li>
                 </ul>
             </div>
             
-            <div class="interactive-tool">
-                <h3>📊 Depolama Alanı Hesaplayıcı</h3>
-                <p>Video süresine göre ne kadar yer kaplayacağını hesapla:</p>
-                <label>Video süresi (dakika):</label>
-                <input type="number" id="videoDuration" placeholder="Örnek: 5" min="1" max="60">
-                <label>Video kalitesi:</label>
-                <select id="videoQuality">
-                    <option value="100">720p (Önerilen - iPad Mini için)</option>
-                    <option value="200">1080p (Yüksek Kalite)</option>
-                    <option value="50">480p (Düşük Kalite)</option>
-                </select>
-                <button onclick="calculateStorage()">📊 Hesapla</button>
-                <div class="result-box" id="storageResult"></div>
+            <div class="info-box">
+                <strong>💡 ÖNEMLİ:</strong> Her derste bilgi öğrenecek ve kendi projeni adım adım oluşturacaksın.  Sonunda tüm bilgilerin yer aldığı bir "Video Üretim Planı" indirebileceksin!
             </div>
             
-            <div class="content-box">
-                <h3>💡 İhtiyacın Olabilecek Ekstra Şeyler</h3>
-                <p><strong>Zorunlu değil ama işini kolaylaştırır:</strong></p>
-                <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
-                    <li>📱 iPad için üçayak veya telefon tutucu (sabit çekim için) - 50-150 TL arası</li>
-                    <li>🎧 Kulaklık veya mikrofon (ses kontrolü için)</li>
-                    <li>💡 Ring light veya masa lambası (ekstra aydınlatma)</li>
-                    <li>🎨 Temiz bir arka plan (videonda güzel görünmesi için)</li>
-                    <li>📝 Not defteri (video fikirlerini yazmak için)</li>
-                </ul>
-            </div>
-            
-            <div class="tip-box">
-                <strong>💡 İPUCU: </strong> İlk videonu çekmeden önce birkaç deneme çekimi yap.  Bu sana güven verecek ve neleri düzeltmen gerektiğini gösterecek!  Ailenle birlikte deneme çekimlerini izle.
-            </div>
-        </div>
-        
-        <!-- Adım 2: Video Fikri & AI Desteği -->
-        <div class="step" data-step="2">
-            <div class="step-header">
-                <div class="step-number">ADIM 2 / 10</div>
-                <div class="step-title">💡 Video Fikri Bul - AI Destekli</div>
-            </div>
-            
-            <div class="content-box">
-                <h3>🎨 2026'da Trend Olan Video Türleri</h3>
-                <div class="video-template" onclick="selectTemplate('gaming')">
-                    <h4>🎮 Oyun Videoları</h4>
-                    <p>Minecraft, Super Bear Adventure gibi oyunları oynarken ekran kaydı + ses yorumu</p>
-                    <div class="trend-tags">
-                        <span class="trend-tag">#gaming</span>
-                        <span class="trend-tag">#minecraft</span>
-                        <span class="trend-tag">#tutorial</span>
-                    </div>
+            <div class="lesson-box">
+                <h3>🎯 Hazır mısın? </h3>
+                <p>Bu eğitimi tamamlamak yaklaşık 30-45 dakika sürecek. İstediğin zaman ara verebilir, ilerleme kaydedilecek! </p>
+                
+                <div class="form-group">
+                    <label>✏️ Önce seni tanıyalım!  Adın ne? </label>
+                    <input type="text" id="userName" placeholder="Adını yaz..." />
                 </div>
                 
-                <div class="video-template" onclick="selectTemplate('educational')">
-                    <h4>🎓 Eğitici İçerikler</h4>
-                    <p>Bir şey öğretmek:  Çizim, origami, matematik, kodlama, İngilizce kelimeler</p>
-                    <div class="trend-tags">
-                        <span class="trend-tag">#öğren</span>
-                        <span class="trend-tag">#tutorial</span>
-                        <span class="trend-tag">#eğitim</span>
-                    </div>
-                </div>
-                
-                <div class="video-template" onclick="selectTemplate('vlog')">
-                    <h4>📹 Vlog & Günlük</h4>
-                    <p>Günlük hayatından kesitler, okul hazırlığı, hobiler, aile eğlenceleri</p>
-                    <div class="trend-tags">
-                        <span class="trend-tag">#vlog</span>
-                        <span class="trend-tag">#günlük</span>
-                        <span class="trend-tag">#hayat</span>
-                    </div>
-                </div>
-                
-                <div class="video-template" onclick="selectTemplate('challenge')">
-                    <h4>🏆 Challenge Videoları</h4>
-                    <p>24 saat challenge, yemek denemeleri, DIY projeleri, bilim deneyleri</p>
-                    <div class="trend-tags">
-                        <span class="trend-tag">#challenge</span>
-                        <span class="trend-tag">#eğlence</span>
-                        <span class="trend-tag">#deneyim</span>
-                    </div>
-                </div>
-                
-                <div class="video-template" onclick="selectTemplate('review')">
-                    <h4>⭐ İnceleme & Unboxing</h4>
-                    <p>Kitap incelemeleri, oyuncak kutu açılımı, uygulama tanıtımı, ürün testleri</p>
-                    <div class="trend-tags">
-                        <span class="trend-tag">#inceleme</span>
-                        <span class="trend-tag">#unboxing</span>
-                        <span class="trend-tag">#review</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ai-box">
-                <h3>🤖 YAPAY ZEKA ile Video Fikri Oluştur</h3>
-                <p>Bu AI araçlarını kullanarak video fikirleri oluştur: </p>
-                <div class="ai-buttons">
-                    <a href="https://chatgpt.com/? q=10+ya%C5%9F%C4%B1ndaki+bir+%C3%A7ocuk+i%C3%A7in+YouTube+video+fikirleri+%C3%B6ner" target="_blank" class="ai-btn">
-                        🤖 ChatGPT<br><small>Fikir Oluştur</small>
-                    </a>
-                    <a href="https://gemini.google.com/" target="_blank" class="ai-btn">
-                        ✨ Gemini<br><small>Google AI</small>
-                    </a>
-                    <a href="https://claude.ai/" target="_blank" class="ai-btn">
-                        🧠 Claude<br><small>Senaryo Yaz</small>
-                    </a>
-                </div>
-                <div class="tip-box" style="margin-top: 15px; background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3);">
-                    <strong style="color: white;">💡 Yapay Zekaya Nasıl Sor:</strong><br>
-                    <span style="color: white;">
-                        "10 yaşındaki bir çocuk için iPad ile çekilebilecek eğlenceli YouTube video fikirleri öner. Videolar 5 dakikadan kısa olsun."
-                    </span>
-                </div>
-            </div>
-            
-            <div class="content-box">
-                <h3>📝 Video Senaryo Şablonu</h3>
-                <p>Her videonun bir planı olmalı:</p>
-                <div class="interactive-tool" style="margin-top: 15px;">
-                    <label><strong>1. Giriş (10 saniye):</strong></label>
-                    <textarea id="intro" rows="2" placeholder="Örnek: Merhaba ben [isim]! Bugün sizlere...  göstereceğim! "></textarea>
-                    
-                    <label><strong>2. Ana İçerik (3-5 dakika):</strong></label>
-                    <textarea id="main" rows="4" placeholder="Örnek: Önce malzemeleri gösteriyorum, sonra adım adım yapıyorum... "></textarea>
-                    
-                    <label><strong>3. Kapanış (10 saniye):</strong></label>
-                    <textarea id="outro" rows="2" placeholder="Örnek: Beğendiyseniz like atmayı ve abone olmayı unutmayın!  Görüşmek üzere! "></textarea>
-                    
-                    <button onclick="saveScript()">💾 Senaryoyu Kaydet</button>
-                    <div class="result-box" id="scriptResult"></div>
-                </div>
-            </div>
-            
-            <div class="tip-box">
-                <strong>💡 PRO İPUCU:</strong> İlk videolarını 3-5 dakika tut!  YouTube algoritması ilk 30 saniyede izleyicinin ilgisini çeken videoları daha çok önerir. Heyecanlı ve enerjik başla!
-            </div>
-        </div>
-        
-        <!-- Adım 3: Video Çekimi -->
-        <div class="step" data-step="3">
-            <div class="step-header">
-                <div class="step-number">ADIM 3 / 10</div>
-                <div class="step-title">🎥 Profesyonel Video Çekimi</div>
-            </div>
-            
-            <div class="content-box">
-                <h3>📐 iPad Mini için Optimal Kamera Ayarları</h3>
-                <ul class="checklist">
-                    <li onclick="toggleCheck(this)"><strong>Yatay (Landscape) Mod:</strong> iPad'i yan çevir - YouTube için zorunlu</li>
-                    <li onclick="toggleCheck(this)"><strong>Çözünürlük:</strong> Ayarlar → Kamera → Video Kaydetme → 1080p/30fps seç</li>
-                    <li onclick="toggleCheck(this)"><strong>Odaklama:</strong> Çekim sırasında yüzüne dokun, sarı kare görünene kadar bekle</li>
-                    <li onclick="toggleCheck(this)"><strong>Mesafe:</strong> İdeal mesafe 1-1.5 metre (kol boyu x2)</li>
-                    <li onclick="toggleCheck(this)"><strong>Göz Hizası:</strong> Kamera tam göz hizanda olsun</li>
-                </ul>
-            </div>
-            
-            <div class="content-box">
-                <h3>💡 Aydınlatma Püf Noktaları (Çok Önemli! )</h3>
-                <div class="success-box">
-                    <strong>✅ DOĞRU:</strong>
-                    <ul style="margin-left: 20px; line-height: 2; margin-top: 10px;">
-                        <li>Gün ışığı - pencere önünde çekim (en iyi seçenek! )</li>
-                        <li>Işık önünden gelsin (yüzün aydınlık olsun)</li>
-                        <li>Gündüz saatleri:  10: 00-16:00 arası ideal</li>
-                        <li>Beyaz duvarların yanında çekim yap (ışığı yansıtır)</li>
-                    </ul>
-                </div>
-                <div class="warning-box">
-                    <strong>❌ YANLIŞ:</strong>
-                    <ul style="margin-left: 20px; line-height: 2; margin-top: 10px;">
-                        <li>Işık arkanda (yüzün karanlık kalır)</li>
-                        <li>Karışık ışıklar (sarı lamba + beyaz ışık birlikte)</li>
-                        <li>Çok parlak ışık (yüzün yanıp görünür)</li>
-                        <li>Çok karanlık (gürültülü görüntü olur)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="content-box">
-                <h3>🎤 Ses Kalitesi Nasıl Artırılır?</h3>
-                <ul style="margin-left: 20px; line-height: 2;">
-                    <li><strong>Sessiz ortam:</strong> TV, müzik, dışarıdan gelen sesler kapalı olsun</li>
-                    <li><strong>Rüzgar yok:</strong> Vantilatör ve klima kapalı</li>
-                    <li><strong>Mesafe:</strong> iPad'e 1 metre mesafeden konuş (çok yakın = patlak ses)</li>
-                    <li><strong>Net konuş:</strong> Ağzında bir şey yokken, net telaffuz et</li>
-                    <li><strong>Enerji:</strong> Monoton değil, heyecanlı konuş</li>
-                    <li><strong>Test:</strong> 10 saniyelik deneme çekim yap, sesini kontrol et</li>
-                </ul>
-            </div>
-            
-            <div class="ai-box">
-                <h3>🎬 iPad Mini Kamera Uygulamaları</h3>
-                <div class="app-list">
-                    <div class="app-card">
-                        <div class="app-icon">📹</div>
-                        <h4>Varsayılan Kamera</h4>
-                        <p>✅ ÜCRETSİZ<br>Başlangıç için yeterli</p>
-                    </div>
-                    <div class="app-card">
-                        <div class="app-icon">🎥</div>
-                        <h4>FiLMiC Pro</h4>
-                        <p>⭐ Profesyonel<br>Manuel ayarlar (74 TL)</p>
-                    </div>
-                    <div class="app-card">
-                        <div class="app-icon">📱</div>
-                        <h4>ProCamera</h4>
-                        <p>⭐ Gelişmiş<br>Daha fazla kontrol</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tip-box">
-                <strong>💡 PRO İPUCU:</strong> Video çekmeden önce MUTLAKA 10 saniyelik test çekimi yap!  Ses, ışık ve görüntü kalitesini kontrol et. İlk çekimde hata yapmak normaldir - prova yap!
-            </div>
-            
-            <div class="interactive-tool">
-                <h3>✅ Çekim Öncesi Kontrol Listesi</h3>
-                <ul class="checklist">
-                    <li onclick="toggleCheck(this)">iPad şarj dolu (%50+)</li>
-                    <li onclick="toggleCheck(this)">Yeterli depolama alanı var</li>
-                    <li onclick="toggleCheck(this)">Ortam aydınlık ve sessiz</li>
-                    <li onclick="toggleCheck(this)">Yatay (landscape) modda</li>
-                    <li onclick="toggleCheck(this)">Kamera lens temiz</li>
-                    <li onclick="toggleCheck(this)">Test çekimi yaptım</li>
-                    <li onclick="toggleCheck(this)">Senaryo/notlar hazır</li>
-                    <li onclick="toggleCheck(this)">Arka plan düzenli</li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- Adım 4: Video Düzenleme -->
-        <div class="step" data-step="4">
-            <div class="step-header">
-                <div class="step-number">ADIM 4 / 10</div>
-                <div class="step-title">✂️ Video Düzenleme (Edit) Masterclass</div>
-            </div>
-            
-            <div class="content-box">
-                <h3>📱 iPad Mini için En İyi Düzenleme Uygulamaları (2026)</h3>
-                <div class="app-list">
-                    <div class="app-card" onclick="selectApp('iMovie')">
-                        <div class="app-icon">🎬</div>
-                        <h4>iMovie</h4>
-                        <p><strong>✅ ÜCRETSİZ</strong><br>
-                        Apple'ın resmi uygulaması<br>
-                        ⭐⭐⭐⭐⭐ Başlangıç için en iyi</p>
-                    </div>
-                    <div class="app-card" onclick="selectApp('CapCut')">
-                        <div class="app-icon">✨</div>
-                        <h4>CapCut</h4>
-                        <p><strong>✅ ÜCRETSİZ</strong><br>
-                        En popüler uygulama 2026<br>
-                        ⭐⭐⭐⭐⭐ Efektler müthiş</p>
-                    </div>
-                    <div class="app-card" onclick="selectApp('InShot')">
-                        <div class="app-icon">🎨</div>
-                        <h4>InShot</h4>
-                        <p><strong>✅ ÜCRETSİZ</strong><br>
-                        Kolay kullanım<br>
-                        ⭐⭐⭐⭐ Müzik ekleme süper</p>
-                    </div>
-                    <div class="app-card" onclick="selectApp('KineMaster')">
-                        <div class="app-icon">👑</div>
-                        <h4>KineMaster</h4>
-                        <p><strong>⭐ Kısmi Ücretli</strong><br>
-                        Çok profesyonel<br>
-                        ⭐⭐⭐⭐⭐ İleri seviye</p>
-                    </div>
-                    <div class="app-card" onclick="selectApp('LumaFusion')">
-                        <div class="app-icon">🚀</div>
-                        <h4>LumaFusion</h4>
-                        <p><strong>💰 Ücretli (199 TL)</strong><br>
-                        Profesyoneller için<br>
-                        ⭐⭐⭐⭐⭐ En gelişmiş</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="content-box">
-                <h3>🎬 Adım Adım Temel Düzenleme</h3>
-                <ol style="margin-left: 20px; line-height: 2.5; margin-top: 10px; font-size: 1.05em;">
-                    <li><strong>📥 İçe Aktarma:</strong> Uygulamayı aç → Yeni Proje → Videoyu seç</li>
-                    <li><strong>✂️ Gereksiz Kısımları Kes:</strong> Başındaki/sonundaki boş anlar, "ııı", "eeee" duraksama anlarını çıkar</li>
-                    <li><strong>🎵 Müzik Ekle:</strong> Telif hakkı olmayan müzikler kullan (YouTube Audio Library), ses seviyesi %30-40</li>
-                    <li><strong>📝 Yazı Ekle:</strong> Başlık, isim, önemli noktalar için alt yazı</li>
-                    <li><strong>🌈 Filtre/Renk Düzeltme:</strong> Parlaklık +10, kontrast hafif artır</li>
-                    <li><strong>🎭 Geçişler:</strong> Sahneler arası "Fade" veya "Dissolve" (abartma! )</li>
-                    <li><strong>💾 Export:</strong> 1080p, 30fps, MP4 formatında kaydet</li>
-                </ol>
-            </div>
-            
-            <div class="ai-box">
-                <h3>🤖 AI İle Otomatik Video Düzenleme</h3>
-                <p>Bu yapay zeka araçları videoları otomatik düzenler:</p>
-                <div class="ai-buttons">
-                    <a href="https://www. descript.com/" target="_blank" class="ai-btn">
-                        🎙️ Descript<br><small>AI ile metin düzenle</small>
-                    </a>
-                    <a href="https://runwayml.com/" target="_blank" class="ai-btn">
-                        🎨 Runway<br><small>AI efektler</small>
-                    </a>
-                    <a href="https://www.videomakr.ai/" target="_blank" class="ai-btn">
-                        ⚡ VideoMakr<br><small>Hızlı edit</small>
-                    </a>
-                </div>
-                <p style="margin-top: 15px; font-size: 0.9em;">Not: Bu araçların çoğu ücretli veya sınırlı ücretsiz. Başlangıç için yukarıdaki ücretsiz uygulamalar yeterli! </p>
-            </div>
-            
-            <div class="content-box">
-                <h3>🎨 Efekt ve İleri Seviye Özellikler</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
-                    <div class="video-template">
-                        <h4>🎵 Ses Efektleri</h4>
-                        <p>Komik sesler, alkış, davul, "whoosh" geçiş sesleri ekle</p>
-                    </div>
-                    <div class="video-template">
-                        <h4>⚡ Hız Ayarı</h4>
-                        <p>Timelapse (2x hız), Slow-motion (0.5x hız)</p>
-                    </div>
-                    <div class="video-template">
-                        <h4>🔍 Zoom Efekti</h4>
-                        <p>Önemli anları yakınlaştır (dramatik an! )</p>
-                    </div>
-                    <div class="video-template">
-                        <h4>😀 Sticker/Emoji</h4>
-                        <p>Eğlenceli emoji'ler, oklar, çerçeveler</p>
-                    </div>
-                    <div class="video-template">
-                        <h4>📝 Alt Yazı</h4>
-                        <p>Söylediklerini yazıyla göster (izlenme %40 artar! )</p>
-                    </div>
-                    <div class="video-template">
-                        <h4>🎭 Green Screen</h4>
-                        <p>Arka planı değiştir (yeşil bez lazım)</p>
-                    </div>
+                <div class="form-group">
+                    <label>🎂 Kaç yaşındasın?</label>
+                    <select id="userAge">
+                        <option value="">Seç...</option>
+                        <option value="7-9">7-9 yaş</option>
+                        <option value="10-12">10-12 yaş</option>
+                        <option value="13-15">13-15 yaş</option>
+                        <option value="16+">16 yaş ve üzeri</option>
+                    </select>
                 </div>
             </div>
             
             <div class="warning-box">
-                <strong>⚠️ TELİF HAKKI UYARISI:</strong> Telif hakkı olan müzikler kullanma!  Videon silinir veya para kazanamazsın. Şu kaynaklardan ücretsiz müzik al: 
-                <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
-                    <li>YouTube Audio Library (YouTube Studio içinde)</li>
-                    <li>Epidemic Sound (ücretli ama kaliteli)</li>
-                    <li>Free Music Archive</li>
-                    <li>Incompetech</li>
-                </ul>
-            </div>
-            
-            <div class="tip-box">
-                <strong>💡 ALTINI ÇİZ:</strong> İlk videolarda sade düzenleme yap!  Çok fazla efekt "amatör" gösterir. Profesyoneller basit ama kaliteli edit yapar.  Zamanla efekt kullanımını öğrenirsin.
+                <strong>⚠️ Ebeveyn İzni:</strong> YouTube içerik üretmek için mutlaka ebeveyn izni almalı ve onların denetiminde çalışmalısın. Bu eğitim, ailenle birlikte tamamlayabileceğin şekilde hazırlandı. 
             </div>
         </div>
         
-        <!-- Adım 5: AI Destekli Thumbnail -->
+        <!-- DERS 2: İçerik Türü Seçimi -->
+        <div class="step" data-step="2">
+            <div class="step-header">
+                <div class="step-number">DERS 2 / 10</div>
+                <div class="step-title">🎬 İçerik Türünü Seç</div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📖 YouTube'da İçerik Türleri</h3>
+                <p>YouTube'da farklı türlerde videolar bulunur. Her türün kendine özgü özellikleri ve gereksinimleri vardır.  Şimdi hangi tür içerik üretmek istediğini seçeceğiz.  Bu seçim, sonraki derslerde sana özel öneriler almamızı sağlayacak. </p>
+            </div>
+            
+            <div class="info-box">
+                <strong>💡 İPUCU:</strong> İlk videonu çekerken, en çok sevdiğin ve rahat hissettiğin konuyu seç. Böylece hem eğlenirsin hem de daha iyi sonuç alırsın!
+            </div>
+            
+            <div class="lesson-box">
+                <h3>🎯 Hangi Tür İçerik Üretmek İstiyorsun?</h3>
+                <p>Aşağıdaki seçeneklerden birini seç.  Her birinin özellikleri farklıdır:</p>
+                
+                <div class="selection-grid">
+                    <div class="selection-card" onclick="selectContentType('gaming')">
+                        <div class="icon">🎮</div>
+                        <h4>Oyun Videoları</h4>
+                        <p>Oyun oynarken ekran kaydı al ve yorum yap</p>
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectContentType('unboxing')">
+                        <div class="icon">📦</div>
+                        <h4>Kutu Açılışı</h4>
+                        <p>Yeni ürünleri aç ve incele</p>
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectContentType('vlog')">
+                        <div class="icon">📹</div>
+                        <h4>Vlog</h4>
+                        <p>Günlük hayatını paylaş</p>
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectContentType('tutorial')">
+                        <div class="icon">📚</div>
+                        <h4>Eğitim/Öğretici</h4>
+                        <p>Bir şey öğret veya anlat</p>
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectContentType('review')">
+                        <div class="icon">⭐</div>
+                        <h4>İnceleme</h4>
+                        <p>Ürün, oyun veya uygulama inceleme</p>
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectContentType('challenge')">
+                        <div class="icon">🏆</div>
+                        <h4>Challenge/Yarışma</h4>
+                        <p>Eğlenceli görevler ve yarışmalar</p>
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectContentType('art')">
+                        <div class="icon">🎨</div>
+                        <h4>Sanat/Yaratıcılık</h4>
+                        <p>Çizim, müzik, el işi göster</p>
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectContentType('boardgame')">
+                        <div class="icon">🎲</div>
+                        <h4>Kutu Oyunu</h4>
+                        <p>Masa oyunları oyna ve anlat</p>
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectContentType('cooking')">
+                        <div class="icon">🍳</div>
+                        <h4>Yemek/Tarif</h4>
+                        <p>Yemek yap ve tarif paylaş</p>
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectContentType('other')">
+                        <div class="icon">💡</div>
+                        <h4>Diğer</h4>
+                        <p>Farklı bir içerik türü</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="contentTypeDetails" style="display: none;">
+                <div class="success-box">
+                    <strong>✅ Seçimin kaydedildi!</strong> Sonraki derslerde bu içerik türüne özel öneriler alacaksın.
+                </div>
+            </div>
+        </div>
+        
+        <!-- DERS 3: Video Konusu -->
+        <div class="step" data-step="3">
+            <div class="step-header">
+                <div class="step-number">DERS 3 / 10</div>
+                <div class="step-title">💡 Video Konunu Belirle</div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📖 İyi Bir Video Konusu Nasıl Seçilir?</h3>
+                <p>Video konun, izleyicilerin videonu bulmasını ve izlemesini sağlar. İyi bir konu seçimi şu özelliklere sahip olmalıdır:</p>
+                <ul>
+                    <li><strong>Spesifik olmalı:</strong> "Minecraft videosu" yerine "Minecraft'ta otomatik çiftlik yapımı"</li>
+                    <li><strong>İlgi çekici olmalı:</strong> İnsanların merak edeceği bir şey</li>
+                    <li><strong>Gerçekleştirilebilir olmalı:</strong> Çekebileceğin bir konu seç</li>
+                    <li><strong>Arama dostu olmalı:</strong> İnsanların arayacağı kelimeler içermeli</li>
+                </ul>
+            </div>
+            
+            <div id="contentSpecificGuide"></div>
+            
+            <div class="lesson-box">
+                <h3>✏️ Şimdi Kendi Video Konunu Belirle</h3>
+                
+                <div class="form-group">
+                    <label>🎯 Video konun ne olacak?  (Kısa ve net yaz)</label>
+                    <input type="text" id="videoTopic" placeholder="Örnek: Minecraft'ta gizli kapı yapımı" />
+                </div>
+                
+                <div class="form-group">
+                    <label>📝 Video konun hakkında biraz detay ver (Ne anlatacaksın?)</label>
+                    <textarea id="videoDescription" placeholder="Örnek: Bu videoda Minecraft'ta gizli bir kapı nasıl yapılacağını adım adım göstereceğim.  Hem kolay hem de havalı görünüyor! "></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>⏱️ Videonun yaklaşık süresi ne kadar olacak?</label>
+                    <select id="videoDuration">
+                        <option value="">Seç...</option>
+                        <option value="0-3">Kısa (0-3 dakika)</option>
+                        <option value="3-7">Orta (3-7 dakika)</option>
+                        <option value="7-15">Uzun (7-15 dakika)</option>
+                        <option value="15+">Çok Uzun (15+ dakika)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <strong>💡 TAVSİYE:</strong> İlk videolarını 3-7 dakika arası tut. Bu süre hem izleyici için ideal hem de senin için yönetilmesi kolay! 
+            </div>
+        </div>
+        
+        <!-- DERS 4: Çekim Hazırlığı -->
+        <div class="step" data-step="4">
+            <div class="step-header">
+                <div class="step-number">DERS 4 / 10</div>
+                <div class="step-title">📱 Çekim Öncesi Hazırlık</div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📖 Profesyonel Çekim için Hazırlık</h3>
+                <p>İyi bir video çekimi için önceden hazırlık yapmak çok önemlidir. Profesyonel YouTuber'lar her zaman çekim öncesi kontrol listesi kullanır. Şimdi senin için bir kontrol listesi oluşturalım! </p>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>✅ Teknik Hazırlık Kontrol Listesi</h3>
+                <p>Aşağıdaki her maddeyi tıklayarak tamamladığını işaretle:</p>
+                <ul class="checklist" id="technicalChecklist">
+                    <li onclick="toggleCheck(this)">iPad Mini'nin şarjı en az %70 dolu</li>
+                    <li onclick="toggleCheck(this)">Depolama alanı kontrol edildi (en az 5 GB boş alan var)</li>
+                    <li onclick="toggleCheck(this)">İnternet bağlantısı test edildi</li>
+                    <li onclick="toggleCheck(this)">Kamera lensi temizlendi</li>
+                    <li onclick="toggleCheck(this)">Gerekli uygulamalar yüklendi ve güncellendi</li>
+                </ul>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>💡 Çekim Ortamı Hazırlığı</h3>
+                <p>Videonun kalitesi için çekim ortamı çok önemlidir: </p>
+                
+                <div class="info-box">
+                    <strong>🌞 Aydınlatma:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Yüzün aydınlık olmalı (karanlık ortamda çekme)</li>
+                        <li>Işık kaynağı arkanızda değil, önünüzde olmalı</li>
+                        <li>Doğal gün ışığı en iyisidir (pencere önü ideal)</li>
+                        <li>Gölge oluşturan nesneleri kaldır</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>🔇 Ses Kalitesi:</strong>
+                    <ul style="margin-top:  10px; margin-left:  20px;">
+                        <li>Sessiz bir ortam seç (TV, müzik kapalı)</li>
+                        <li>Kameraya yakın konuş (1-2 metre mesafe ideal)</li>
+                        <li>Deneme çekimi yap ve sesini kontrol et</li>
+                        <li>Yankı yapan ortamlardan kaçın</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box" style="margin-top:  15px;">
+                    <strong>🎨 Arka Plan:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Dağınık olmayan düzenli bir arka plan</li>
+                        <li>Videona uygun dekorasyon (oyun videosu için posterler vb.)</li>
+                        <li>Dikkat dağıtıcı olmayan renkler</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📐 iPad Mini ile Doğru Çekim Açısı</h3>
+                <p>iPad'i nasıl tutacağın video kalitesini etkiler:</p>
+                <ul>
+                    <li><strong>Yatay (Landscape):</strong> iPad'i yan çevir - YouTube için standart format</li>
+                    <li><strong>Göz hizası: </strong> Kamera gözlerinle aynı hizada olmalı</li>
+                    <li><strong>Mesafe:</strong> Kendi çekim için 1-2 metre, ürün çekimi için 30-50 cm</li>
+                    <li><strong>Sabitlik:</strong> Mümkünse tripod veya telefon tutucu kullan</li>
+                </ul>
+                
+                <div class="warning-box" style="margin-top: 15px;">
+                    <strong>⚠️ ÖNEMLI:</strong> Eğer iPad'i elle tutarak çekeceksen, iki elinle tut ve dirseklerini vücuduna yasla. Bu daha sabit görüntü sağlar.
+                </div>
+            </div>
+            
+            <div id="contentSpecificPrep"></div>
+            
+            <div class="lesson-box">
+                <h3>📝 Senaryonu Hazırla</h3>
+                <p>Kameraya ne söyleyeceğini önceden planla.  Tam metin ezberleme, sadece ana noktaları bil: </p>
+                
+                <div class="form-group">
+                    <label>🎬 Giriş cümlen ne olacak?  (İlk 10 saniye çok önemli! )</label>
+                    <input type="text" id="introScript" placeholder="Örnek:  Merhaba ben Ali!  Bugün size Minecraft'ta gizli kapı yapmayı göstereceğim!" />
+                </div>
+                
+                <div class="form-group">
+                    <label>📋 Ana içerikte neler anlatacaksın?  (Madde madde yaz)</label>
+                    <textarea id="mainScript" placeholder="Örnek: &#10;1. Malzemeleri göstereceğim&#10;2. Adım adım yapımı anlatacağım&#10;3. Sonucu test edeceğim"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>👋 Kapanış cümlen ne olacak? </label>
+                    <input type="text" id="outroScript" placeholder="Örnek: Bu videoyu beğendiyseniz beğen butonuna basmayı unutmayın!  Görüşmek üzere!" />
+                </div>
+            </div>
+            
+            <div class="success-box">
+                <strong>✅ Harika! </strong> Çekim hazırlığı tamamlandı. Artık kamera karşısında ne yapacağını biliyorsun! 
+            </div>
+        </div>
+        
+        <!-- DERS 5: Video Çekimi -->
         <div class="step" data-step="5">
             <div class="step-header">
-                <div class="step-number">ADIM 5 / 10</div>
-                <div class="step-title">🖼️ AI ile Kapak Görseli (Thumbnail)</div>
+                <div class="step-number">DERS 5 / 10</div>
+                <div class="step-title">🎥 Video Çekimi</div>
             </div>
             
-            <div class="content-box">
-                <h3>🎯 Thumbnail Nedir ve Neden ÇOOK Önemli?</h3>
-                <div class="success-box">
-                    <p><strong>Thumbnail = Videonun Reklamı</strong></p>
-                    <p>İnsanlar YouTube'da ilk önce thumbnail'e bakar. İyi thumbnail: </p>
-                    <ul style="margin-left: 20px; line-height: 2; margin-top: 10px;">
-                        <li>✅ Tıklanma oranını %300'e kadar artırır! </li>
-                        <li>✅ Video içeriğini anlatır</li>
-                        <li>✅ Merak uyandırır</li>
-                        <li>✅ Kalabalıkta dikkat çeker</li>
+            <div class="lesson-box">
+                <h3>📖 Profesyonel Video Çekiminin Kuralları</h3>
+                <p>Video çekimi bir sanattır ama temel kuralları öğrenirsen kolayca uygulayabilirsin.  Aşağıda profesyonel YouTuber'ların kullandığı teknikleri öğreneceksin. </p>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>🎬 Çekim Teknikleri</h3>
+                
+                <div class="info-box">
+                    <strong>📏 Kompozisyon:  "Üçte Bir Kuralı"</strong>
+                    <p style="margin-top: 10px;">Ekranı zihninde 3x3 bir ızgaraya böl.  Kendini tam ortaya değil, biraz sağa veya sola yerleştir. Bu daha profesyonel görünür.</p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>👀 Kameraya Bakış</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>İzleyiciyle konuşuyormuş gibi kameraya bak</li>
+                        <li>Göz teması kur (lensin tam ortasına bak)</li>
+                        <li>Doğal ve samimi ol, robot gibi konuşma</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>🗣️ Konuşma Teknikleri</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li><strong>Enerjik ol:</strong> Monoton konuşma sıkıcıdır, coşkulu ve hareketli konuş</li>
+                        <li><strong>Net konuş:</strong> Yavaş ve anlaşılır ol, ağzını iyi aç</li>
+                        <li><strong>Duraklamalar kullan:</strong> Cümleler arası kısa duraksama ver</li>
+                        <li><strong>Hata yapınca devam et:</strong> Dur, 3 saniye bekle ve kaldığın yerden devam et</li>
                     </ul>
                 </div>
             </div>
             
-            <div class="content-box">
-                <h3>🎨 Mükemmel Thumbnail Formülü (2026)</h3>
-                <div style="background: white; padding: 20px; border-radius: 12px; margin-top: 15px; border: 3px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 15px;">✨ ALTIN KURAL: </h4>
-                    <ul style="line-height: 2. 5; font-size: 1.05em;">
-                        <li>📏 <strong>Boyut:</strong> 1280x720 piksel (HD oran)</li>
-                        <li>🎨 <strong>Renkler:</strong> Canlı, kontrastlı (kırmızı, sarı, mavi)</li>
-                        <li>✍️ <strong>Yazı:</strong> 3-5 kelime MAX, büyük font (60-80pt)</li>
-                        <li>😄 <strong>Yüz İfadesi:</strong> Şaşkın, mutlu, heyecanlı</li>
-                        <li>🔥 <strong>Emoji:</strong> 1-2 emoji dikkat çeker (abartma!)</li>
-                        <li>🎯 <strong>Odak:</strong> Tek bir konuya odaklan</li>
-                        <li>📱 <strong>Test:</strong> Küçük boyutta da okunabilir mi?</li>
-                    </ul>
+            <div class="lesson-box">
+                <h3>📱 iPad Kamera Uygulaması Ayarları</h3>
+                <p>iPad'in varsayılan kamera uygulamasını kullanabilirsin. İşte önemli ayarlar:</p>
+                <ul>
+                    <li><strong>Çözünürlük:</strong> 1080p (Full HD) seç - 4K gereksiz yer kaplar</li>
+                    <li><strong>FPS (Kare Hızı):</strong> 30 FPS yeterli, 60 FPS sadece hızlı aksiyonlar için</li>
+                    <li><strong>Odak kilidi:</strong> Çekime başlamadan ekrana 2 saniye basılı tut (odak kilitlenir)</li>
+                    <li><strong>Pozlama:</strong> Çok karanlık veya aydınlıksa ekranı yukarı/aşağı kaydırarak ayarla</li>
+                </ul>
+            </div>
+            
+            <div id="contentSpecificShooting"></div>
+            
+            <div class="lesson-box">
+                <h3>🎬 Çekim Sırası:  Adım Adım</h3>
+                <ol style="margin-left: 20px; line-height: 2. 5;">
+                    <li><strong>Ekipmanı hazırla:</strong> iPad'i yerine kur, açıyı ayarla</li>
+                    <li><strong>Deneme çekimi:</strong> 10 saniyelik test çekimi yap, kontrol et</li>
+                    <li><strong>Kayda başla:</strong> Kırmızı butona bas ve 3 saniye bekle</li>
+                    <li><strong>Giriş yap:</strong> Senaryondaki giriş cümleni söyle</li>
+                    <li><strong>Ana içerik:</strong> Planladığın şeyi anlat/göster</li>
+                    <li><strong>Kapanış yap:</strong> Kapanış cümleni söyle ve 3 saniye bekle</li>
+                    <li><strong>Kaydı durdur:</strong> Stop butonuna bas</li>
+                    <li><strong>Kontrol et:</strong> Videoyu izle, gerekirse tekrar çek</li>
+                </ol>
+            </div>
+            
+            <div class="warning-box">
+                <strong>⚠️ ÇEKIM İPUCU: </strong> İlk çekimde mükemmel olmak zorunda değilsin!  Profesyonel YouTuber'lar bile videoları birkaç kez çeker.  Hata yaptığında durma, devam et ve düzenleme sırasında o kısmı kesersin.
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📋 Çekim Sonrası Kontrol</h3>
+                <p>Videoyu çektikten sonra şunları kontrol et:</p>
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)">Video net ve odaklı mı?</li>
+                    <li onclick="toggleCheck(this)">Ses net duyuluyor mu?</li>
+                    <li onclick="toggleCheck(this)">Işıklandırma yeterli mi?</li>
+                    <li onclick="toggleCheck(this)">Başlangıç ve bitiş 3'er saniye boş bırakıldı mı?</li>
+                    <li onclick="toggleCheck(this)">Söylemek istediğim her şeyi söyledim mi?</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <strong>🎉 Tebrikler!</strong> İlk ham çekimin hazır!  Şimdi bu videoyu düzenleyeceğiz.
+            </div>
+        </div>
+        
+        <!-- DERS 6: Video Düzenleme -->
+        <div class="step" data-step="6">
+            <div class="step-header">
+                <div class="step-number">DERS 6 / 10</div>
+                <div class="step-title">✂️ Video Düzenleme (Editing)</div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📖 Video Düzenleme Nedir?</h3>
+                <p>Video düzenleme (editing), ham çektiğin videoyu profesyonel bir YouTube videosuna dönüştürme sürecidir. Gereksiz kısımları keser, müzik ekler, efektler uygular ve izlemesi eğlenceli hale getirirsin.</p>
+                <p><strong>İyi bir düzenleme: </strong></p>
+                <ul>
+                    <li>Videoyu daha akıcı yapar</li>
+                    <li>İzleyicinin dikkatini tutar</li>
+                    <li>Hataları gizler</li>
+                    <li>Profesyonel görünüm sağlar</li>
+                </ul>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📱 iPad Mini için Düzenleme Uygulamaları</h3>
+                <p>İşte iPad'de kullanabileceğin en iyi ücretsiz video düzenleme uygulamaları:</p>
+                
+                <div class="app-grid">
+                    <div class="app-card">
+                        <div class="app-icon">🎬</div>
+                        <h4>iMovie</h4>
+                        <span class="badge">ÜCRETSİZ</span>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Apple'ın resmi uygulaması.  Başlangıç için mükemmel! </p>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">✨</div>
+                        <h4>CapCut</h4>
+                        <span class="badge">ÜCRETSİZ</span>
+                        <p style="margin-top: 10px; font-size: 0.9em;">En popüler!  Harika efektler ve kolay kullanım.</p>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">📹</div>
+                        <h4>InShot</h4>
+                        <span class="badge">ÜCRETSİZ</span>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Hızlı düzenleme için ideal. Müzik ekleme çok kolay.</p>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">🎥</div>
+                        <h4>KineMaster</h4>
+                        <span class="badge">Kısmi Ücretli</span>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Daha gelişmiş özellikler. Deneyim kazandıkça kullan.</p>
+                    </div>
+                </div>
+                
+                <div class="info-box" style="margin-top: 20px;">
+                    <strong>💡 TAVSİYE: </strong> İlk başta <strong>iMovie</strong> veya <strong>CapCut</strong> kullan. İkisi de ücretsiz ve iPad Mini'de mükemmel çalışır.  Bu derste CapCut üzerinden anlatacağız çünkü en popüler seçenek.
                 </div>
             </div>
             
-            <div class="ai-box">
-                <h3>🤖 AI ile Otomatik Thumbnail Oluşturma</h3>
-                <p>Bu yapay zeka araçları senin için thumbnail tasarlar:</p>
-                <div class="ai-buttons">
-                    <a href="https://www.canva.com/create/thumbnails/" target="_blank" class="ai-btn">
-                        🎨 Canva AI<br><small>Şablonlarla oluştur</small>
-                    </a>
-                    <a href="https://www.adobe.com/express/create/youtube-thumbnail" target="_blank" class="ai-btn">
-                        ✨ Adobe Express<br><small>Profesyonel tasarım</small>
-                    </a>
-                    <a href="https://www.designify.com/" target="_blank" class="ai-btn">
-                        🚀 Designify<br><small>Arka plan kaldır</small>
-                    </a>
-                    <a href="https://ideogram.ai/" target="_blank" class="ai-btn">
-                        🧠 Ideogram AI<br><small>Yazı + görsel oluştur</small>
-                    </a>
+            <div class="lesson-box">
+                <h3>🎬 Video Düzenleme:  Adım Adım</h3>
+                
+                <p><strong>1.  ADIM:  Videoyu İçe Aktar</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>CapCut uygulamasını aç</li>
+                    <li>"Yeni Proje" butonuna tıkla</li>
+                    <li>Çektiğin videoyu seç ve "Ekle" de</li>
+                    <li>Video timeline'a (zaman çizelgesi) yüklenir</li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>2. ADIM: Gereksiz Kısımları Kes</strong></p>
+                <ul style="margin-left:  20px; line-height:  2;">
+                    <li>Timeline'da videoyu seç</li>
+                    <li>Başlangıçtaki boş kısmı bul, "Böl" (Split) butonuna bas</li>
+                    <li>Sondaki boş kısmı da böl</li>
+                    <li>Boş parçaları seç ve "Sil" e bas</li>
+                    <li>Hata yaptığın kısımları da aynı şekilde kes</li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>3. ADIM: Müzik Ekle</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>"Ses" veya "Audio" butonuna tıkla</li>
+                    <li>"Müzikler" kısmından telif hakkı olmayan müzik seç</li>
+                    <li>Müziği timeline'a ekle</li>
+                    <li>Ses seviyesini ayarla (konuşmanı bastırmamalı, arka planda kalmalı)</li>
+                    <li><strong>Öneri:</strong> Müzik ses seviyesi %20-30 arası olmalı</li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>4. ADIM: Yazı (Text) Ekle</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>"Metin" veya "Text" butonuna tıkla</li>
+                    <li>İstediğin yazı stilini seç</li>
+                    <li>Yazını yaz (örnek: video başlığı, ismim, önemli notlar)</li>
+                    <li>Yazının boyutunu, rengini ve yerini ayarla</li>
+                    <li>Yazının ne kadar süre gösterileceğini belirle</li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>5. ADIM: Geçiş Efektleri (Transitions)</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Eğer birden fazla sahne varsa, aralarına geçiş ekle</li>
+                    <li>"Geçişler" menüsünü aç</li>
+                    <li>İki sahne arasına "Fade" veya "Dissolve" efekti ekle</li>
+                    <li>Geçiş süresi 0.5-1 saniye olmalı</li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>6. ADIM: Ses Efektleri (İsteğe Bağlı)</strong></p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>"Ses Efektleri" menüsünü aç</li>
+                    <li>Uygun yerlere komik sesler ekle (alkış, davul, vızıltı)</li>
+                    <li>Abarttıkça video komik olur ama çok fazla ekleme! </li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>7. ADIM: Renk Düzeltme (Color Grading)</strong></p>
+                <ul style="margin-left:  20px; line-height:  2;">
+                    <li>"Ayarla" veya "Filtre" menüsünü aç</li>
+                    <li>Parlaklığı, kontrastı ve doygunluğu hafifçe artır</li>
+                    <li>Video daha canlı görünecektir</li>
+                    <li><strong>DİKKAT:</strong> Abartma, doğal görünmeli! </li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <strong>⚠️ DÜZENLEME KURALI:</strong> "Az çoktur" prensibini unutma! İlk videolarında çok fazla efekt kullanma. Basit ve temiz düzenlemeler daha profesyonel görünür.  Zamanla daha fazla efekt ekleyebilirsin.
+            </div>
+            
+            <div class="lesson-box">
+                <h3>💾 Videoyu Dışa Aktar (Export)</h3>
+                <p>Düzenleme bittiğinde videoyu kaydetmen gerekir: </p>
+                <ol style="margin-left: 20px; line-height: 2.5;">
+                    <li>"Dışa Aktar" veya "Export" butonuna tıkla</li>
+                    <li><strong>Çözünürlük:</strong> 1080p (Full HD) seç</li>
+                    <li><strong>Kare Hızı:</strong> 30 FPS</li>
+                    <li><strong>Kalite:</strong> En yüksek kalite seç</li>
+                    <li>"Kaydet" butonuna bas ve işlemin bitmesini bekle</li>
+                    <li>Video galeri ne kaydedilecek</li>
+                </ol>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📝 Düzenleme Planını Oluştur</h3>
+                <p>Şimdi kendi videon için düzenleme planı yap:</p>
+                
+                <div class="form-group">
+                    <label>🎵 Hangi tür müzik ekleyeceksin?</label>
+                    <select id="musicType">
+                        <option value="">Seç...</option>
+                        <option value="energetic">Enerjik/Hareketli</option>
+                        <option value="calm">Sakin/Rahatlatıcı</option>
+                        <option value="funny">Komik/Eğlenceli</option>
+                        <option value="epic">Epik/Heyecanlı</option>
+                        <option value="none">Müzik eklemeyeceğim</option>
+                    </select>
                 </div>
-                <div class="tip-box" style="margin-top: 15px; background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3);">
-                    <strong style="color: white;">💡 AI'ya Nasıl Tarif Et:</strong><br>
-                    <span style="color: white;">
-                        "10 yaşındaki bir çocuğun Minecraft videosu için YouTube thumbnail tasarla.  Renkli, enerji dolu, büyük yazı, heyecanlı yüz ifadesi olsun."
-                    </span>
+                
+                <div class="form-group">
+                    <label>✂️ Hangi kısımları keseceğini not al</label>
+                    <textarea id="cutPlan" placeholder="Örnek: &#10;- Başlangıçtaki 5 saniye&#10;- 1:30'daki hata yaptığım yer&#10;- Sondaki 3 saniye"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>📝 Hangi yazıları ekleyeceksin?</label>
+                    <textarea id="textPlan" placeholder="Örnek:&#10;- Başlıkta:  GİZLİ KAPI YAPIMI&#10;- 0:30'da:  ADIM 1&#10;- 2:00'da: ADIM 2"></textarea>
                 </div>
             </div>
             
-            <div class="content-box">
-                <h3>📱 iPad Mini'de Thumbnail Yapma Uygulamaları</h3>
-                <div class="app-list">
+            <div class="success-box">
+                <strong>✅ Harika! </strong> Düzenleme planın hazır. Artık videoyu profesyonel hale getirmeye hazırsın! 
+            </div>
+        </div>
+        
+        <!-- DERS 7: Thumbnail Tasarımı -->
+        <div class="step" data-step="7">
+            <div class="step-header">
+                <div class="step-number">DERS 7 / 10</div>
+                <div class="step-title">🖼️ Thumbnail (Kapak Görseli) Tasarımı</div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📖 Thumbnail Nedir ve Neden Bu Kadar Önemli? </h3>
+                <p>Thumbnail, videonun kapak görseli dir. YouTube'da insanların gördüğü <strong>ilk şey</strong>!  İyi bir thumbnail: </p>
+                <ul>
+                    <li>📈 Video tıklanma oranını %300'e kadar artırabilir</li>
+                    <li>👁️ İzleyicinin dikkatini çeker</li>
+                    <li>📝 Video içeriği hakkında bilgi verir</li>
+                    <li>🎨 Profesyonel görünüm sağlar</li>
+                </ul>
+                <div class="warning-box" style="margin-top: 15px;">
+                    <strong>⚠️ İSTATİSTİK:</strong> YouTube'da izleyicilerin %90'ı videoyu thumbnail'e bakarak seçer. Bu yüzden thumbnail tasarımı, video çekimi kadar önemlidir! 
+                </div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>🎨 İyi Bir Thumbnail'in 7 Altın Kuralı</h3>
+                <ol style="margin-left: 20px; line-height: 2.5;">
+                    <li><strong>Net ve anlaşılır:</strong> Ne hakkında olduğu 1 saniyede belli olmalı</li>
+                    <li><strong>Büyük ve okunabilir yazı:</strong> Telefonda da okunabilmeli</li>
+                    <li><strong>Canlı renkler:</strong> Parlak ve dikkat çekici</li>
+                    <li><strong>Yüz ifadesi:</strong> Şaşkın, mutlu veya heyecanlı ifade izleyici çeker</li>
+                    <li><strong>3-5 kelime max:</strong> Çok fazla yazı karışıklık yaratır</li>
+                    <li><strong>Kontrast:</strong> Yazı ile arka plan arasında renk farkı olmalı</li>
+                    <li><strong>Tutarlılık:</strong> Tüm videolarında benzer stil kullan (marka yaratır)</li>
+                </ol>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📱 Thumbnail Yapma Uygulamaları</h3>
+                <div class="app-grid">
                     <div class="app-card">
                         <div class="app-icon">🎨</div>
                         <h4>Canva</h4>
-                        <p><strong>✅ ÜCRETSİZ</strong><br>
-                        Hazır şablonlar<br>
-                        ⭐⭐⭐⭐⭐ #1 Öneri</p>
+                        <span class="badge">ÜCRETSİZ</span>
+                        <p style="margin-top: 10px; font-size: 0.9em;"><strong>EN İYİ SEÇİM! </strong> Binlerce hazır şablon, çok kolay kullanım.</p>
                     </div>
+                    
                     <div class="app-card">
                         <div class="app-icon">✍️</div>
                         <h4>Phonto</h4>
-                        <p><strong>✅ ÜCRETSİZ</strong><br>
-                        Yazı eklemek için<br>
-                        ⭐⭐⭐⭐ Çok kolay</p>
+                        <span class="badge">ÜCRETSİZ</span>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Resme yazı eklemek için mükemmel. 200+ font seçeneği.</p>
                     </div>
+                    
                     <div class="app-card">
                         <div class="app-icon">🖼️</div>
                         <h4>PicsArt</h4>
-                        <p><strong>✅ ÜCRETSİZ</strong><br>
-                        Efektli tasarımlar<br>
-                        ⭐⭐⭐⭐ Yaratıcı</p>
+                        <span class="badge">ÜCRETSİZ</span>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Efektli ve yaratıcı tasarımlar için ideal. </p>
                     </div>
+                    
                     <div class="app-card">
                         <div class="app-icon">🎭</div>
-                        <h4>Over</h4>
-                        <p><strong>💰 Kısmi Ücretli</strong><br>
-                        Profesyonel şablonlar<br>
-                        ⭐⭐⭐⭐⭐ Süper</p>
+                        <h4>Adobe Express</h4>
+                        <span class="badge">ÜCRETSİZ</span>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Profesyonel tasarım araçları. </p>
                     </div>
                 </div>
             </div>
             
-            <div class="interactive-tool">
-                <h3>🎨 Thumbnail Tasarım Asistanı</h3>
-                <p>Video konunu yaz, sana thumbnail için öneri oluşturalım:</p>
-                <input type="text" id="videoTopic" placeholder="Örnek: Minecraft'ta gizli ev yapımı">
-                <button onclick="generateThumbnailIdeas()">✨ Thumbnail Önerisi Oluştur</button>
-                <div class="result-box" id="thumbnailResult"></div>
-            </div>
-            
-            <div class="content-box">
-                <h3>✨ Adım Adım Canva ile Thumbnail</h3>
-                <ol style="margin-left: 20px; line-height: 2.5; margin-top: 10px; font-size: 1.05em;">
-                    <li>📱 Canva uygulamasını indir ve ücretsiz hesap aç</li>
-                    <li>🔍 "YouTube Thumbnail" ara</li>
-                    <li>🎨 Beğendiğin bir şablonu seç</li>
-                    <li>🖼️ Kendi fotoğrafını yükle (video karesinden al)</li>
-                    <li>✍️ Yazıyı değiştir (video konunu yaz)</li>
-                    <li>🎨 Renkleri ayarla (canlı renkler seç)</li>
-                    <li>😀 Emoji ekle (dikkati çeker)</li>
-                    <li>💾 İndir ve kaydet</li>
-                </ul>
-            </div>
-            
-            <div class="content-box">
-                <h3>🤖 Yapay Zeka ile Thumbnail İçin Fikir Al</h3>
-                <p><strong>ChatGPT veya Gemini'ye şunu sor:</strong></p>
-                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #667eea; margin: 10px 0;">
-                    <p style="font-style: italic; color: #333;">
-                        "Minecraft'ta gizli kapı yapımı hakkında bir YouTube videosu çekiyorum. Thumbnail için 3-5 kelimelik çekici başlık önerileri verir misin? Emoji de ekle."
-                    </p>
-                </div>
-                <p><strong>Örnek AI Cevapları:</strong></p>
-                <ul style="margin-left: 20px; line-height: 2;">
-                    <li>🚪 GİZLİ KAPI YAPIMI!  😱</li>
-                    <li>🔥 BUNU BİLMİYORDUN! </li>
-                    <li>⚡ EN KOLAY TAKTİK!</li>
-                </ul>
-            </div>
-            
-            <div class="tip-box">
-                <strong>💡 İPUCU:</strong> Popüler YouTuber'ların thumbnail'lerini incele. Hangi renkleri kullanıyorlar? Yazıları nasıl yerleştiriyorlar? Onlardan ilham al!
-            </div>
-        </div>
-        
-        <!-- Adım 6: YouTube'a Yükleme -->
-        <div class="step" data-step="6">
-            <div class="step-header">
-                <div class="step-number">ADIM 6 / 8</div>
-                <div class="step-title">⬆️ YouTube'a Yükleme</div>
-            </div>
-            
-            <div class="content-box">
-                <h3>📺 YouTube Kanalı Oluşturma</h3>
-                <p><strong>⚠️ ÖNEMLİ:</strong> YouTube kullanmak için 13 yaşında olman gerekiyor. Ebeveyn izni ve denetimi şart! </p>
+            <div class="lesson-box">
+                <h3>🎯 Canva ile Thumbnail Yapımı:  Adım Adım</h3>
+                <p><strong>Canva'yı tercih ediyoruz çünkü:</strong> En kolay, ücretsiz ve iPad'de mükemmel çalışıyor! </p>
+                
                 <ol style="margin-left: 20px; line-height: 2.5; margin-top: 15px;">
-                    <li>YouTube uygulamasını aç</li>
-                    <li>Sağ üstteki profil resmine tıkla</li>
-                    <li>"Kanal oluştur" seçeneğini seç</li>
-                    <li>Kanal adını belirle (değiştirilebilir)</li>
-                    <li>Profil fotoğrafı ekle</li>
+                    <li><strong>Canva uygulamasını indir</strong> (App Store'dan ücretsiz)</li>
+                    <li><strong>Ücretsiz hesap oluştur</strong> (e-posta ile)</li>
+                    <li><strong>Ana sayfada arama kutusuna "YouTube Thumbnail" yaz</strong></li>
+                    <li><strong>Hazır şablonlara göz at</strong> (binlerce ücretsiz şablon var)</li>
+                    <li><strong>Beğendiğin bir şablonu seç</strong></li>
+                    <li><strong>Şablonu özelleştir: </strong>
+                        <ul style="margin-top: 10px;">
+                            <li>Fotoğrafı değiştir (videodan ekran görüntüsü veya özel fotoğraf)</li>
+                            <li>Yazıyı değiştir (video konunu yaz)</li>
+                            <li>Renkler i ayarla (canlı renkler seç)</li>
+                            <li>Emoji ekle (dikkat çeker)</li>
+                        </ul>
+                    </li>
+                    <li><strong>İndır: </strong> Sağ üstteki "İndir" butonuna bas</li>
+                    <li><strong>Format:</strong> PNG seç (en yüksek kalite)</li>
+                    <li><strong>iPad'ine kaydet</strong></li>
                 </ol>
             </div>
             
-            <div class="content-box">
-                <h3>📤 Video Yükleme Adımları</h3>
-                <ol style="margin-left: 20px; line-height: 2.5;">
-                    <li>YouTube uygulamasında "+" butonuna tıkla</li>
-                    <li>"Video yükle" seçeneğini seç</li>
-                    <li>Düzenlediğin videoyu seç</li>
-                    <li>Video yüklenirken bilgileri doldur: </li>
-                </ol>
+            <div class="lesson-box">
+                <h3>🎨 Renk Seçimi Rehberi</h3>
+                <p>Thumbnail'de kullanacağın renkler çok önemli!  İşte en etkili renk kombinasyonları:</p>
+                                <div class="example-box">
+                    <h4>✅ ETKİLİ RENK KOMBİNASYONLARI: </h4>
+                    <div style="margin-top: 10px;">
+                        <span class="tag" style="background:  #FF0000; color: white;">Kırmızı + Beyaz</span>
+                        <span class="tag" style="background: #FFD700; color: black;">Sarı + Siyah</span>
+                        <span class="tag" style="background: #00FF00; color: black;">Yeşil + Mor</span>
+                        <span class="tag" style="background: #FF6B00; color: white;">Turuncu + Mavi</span>
+                        <span class="tag" style="background: #FF1493; color: white;">Pembe + Lacivert</span>
+                    </div>
+                    <p style="margin-top:  10px; font-size:  0.9em;"><strong>İPUCU: </strong> Kontrast yüksek renkler kullan. Açık renk üzerine koyu yazı veya tam tersi.</p>
+                </div>
             </div>
             
-            <div class="content-box">
-                <h3>✍️ Video Bilgilerini Doldurma</h3>
-                <p><strong>Başlık (Title):</strong></p>
+            <div class="lesson-box">
+                <h3>📸 Thumbnail için Fotoğraf Çekimi</h3>
+                <p>Eğer videodan ekran görüntüsü yerine özel fotoğraf çekeceksen:</p>
                 <ul style="margin-left: 20px; line-height: 2;">
-                    <li>İlgi çekici olmalı</li>
-                    <li>Video içeriğini anlatmalı</li>
-                    <li>40-60 karakter ideal</li>
-                    <li>Örnek: "Minecraft'ta Gizli Kapı Yapımı!  😱"</li>
-                </ul>
-                
-                <p style="margin-top: 15px;"><strong>Açıklama (Description):</strong></p>
-                <ul style="margin-left: 20px; line-height: 2;">
-                    <li>Video hakkında detaylı bilgi ver</li>
-                    <li>Kullandığın uygulamaları yaz</li>
-                    <li>"Abone olmayı unutmayın!" gibi çağrılar ekle</li>
-                    <li>İlgili hashtag'ler ekle (#minecraft #tutorial)</li>
-                </ul>
-                
-                <p style="margin-top: 15px;"><strong>Thumbnail: </strong></p>
-                <ul style="margin-left: 20px; line-height: 2;">
-                    <li>"Özel thumbnail ekle" butonuna tıkla</li>
-                    <li>Hazırladığın kapak görselini yükle</li>
-                </ul>
-                
-                <p style="margin-top: 15px;"><strong>Gizlilik Ayarları:</strong></p>
-                <ul style="margin-left: 20px; line-height: 2;">
-                    <li><strong>Genel:</strong> Herkes görebilir</li>
-                    <li><strong>Gizli:</strong> Linki olanlar görebilir (test için ideal)</li>
-                    <li><strong>Özel:</strong> Sadece sen görebilirsin</li>
+                    <li><strong>Yüz ifadesi:</strong> Abartılı ifade yap (şaşkın, gülümseyen, heyecanlı)</li>
+                    <li><strong>Işık:</strong> Yüzün net görünsün, gölge olmasın</li>
+                    <li><strong>Arka plan:</strong> Temiz ve video konusuyla ilgili</li>
+                    <li><strong>Pozisyon:</strong> Biraz yanlamasına dur (tam ortada olma)</li>
+                    <li><strong>El işaretleri:</strong> İşaret parmağı, başparmak yukarı gibi jestler ekle</li>
                 </ul>
             </div>
             
-            <div class="tip-box">
-                <strong>💡 İPUCU:</strong> İlk videonu "Gizli" olarak yükle!  Ailenle birlikte izleyin ve sorun yoksa "Genel" yap. Bu şekilde hataları düzeltme şansın olur. 
+            <div id="contentSpecificThumbnail"></div>
+            
+            <div class="lesson-box">
+                <h3>✏️ Kendi Thumbnail Tasarımını Planla</h3>
+                
+                <div class="form-group">
+                    <label>🖼️ Thumbnail'de hangi görsel olacak?</label>
+                    <select id="thumbnailImage">
+                        <option value="">Seç...</option>
+                        <option value="face">Kendi yüzüm (özel çekim)</option>
+                        <option value="screenshot">Videodan ekran görüntüsü</option>
+                        <option value="product">Ürün/nesne görseli</option>
+                        <option value="graphic">Grafik/illüstrasyon</option>
+                        <option value="mixed">Karışık (yüz + nesne)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>✍️ Thumbnail'de ne yazacak?  (3-5 kelime, BÜYÜK HARFLERLE)</label>
+                    <input type="text" id="thumbnailText" placeholder="Örnek: GİZLİ KAPI YAPIMI!  😱" maxlength="40" />
+                </div>
+                
+                <div class="form-group">
+                    <label>🎨 Hangi renkleri kullanacaksın?</label>
+                    <input type="text" id="thumbnailColors" placeholder="Örnek:  Kırmızı yazı, sarı arka plan" />
+                </div>
+                
+                <div class="form-group">
+                    <label>😀 Hangi emojileri ekleyeceksin?  (Opsiyonel)</label>
+                    <input type="text" id="thumbnailEmojis" placeholder="Örnek: 😱 🔥 ⚡" />
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <strong>⚠️ THUMBNAIL HATASI YAPMA! </strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>❌ Çok fazla yazı yazma (okunmaz)</li>
+                    <li>❌ Küçük yazı kullanma (telefonda görünmez)</li>
+                    <li>❌ Karışık ve anlaşılmaz tasarım yapma</li>
+                    <li>❌ Yanıltıcı thumbnail kullanma (videoda olmayan şey gösterme)</li>
+                    <li>❌ Telif hakkı olan görseller kullanma</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <strong>✅ Mükemmel! </strong> Thumbnail tasarım planın hazır. Bu tasarım, videonun izlenme sayısını ciddi şekilde artıracak!
             </div>
         </div>
         
-        <!-- Adım 7: YENİ! Yapay Zeka Asistanları Kullan -->
-        <div class="step" data-step="7">
-            <div class="step-header">
-                <div class="step-number">ADIM 7 / 8</div>
-                <div class="step-title">🤖 Yapay Zeka Asistanlarını Kullan</div>
-            </div>
-            
-            <div class="content-box">
-                <h3>🌟 AI Araçları Neden Önemli?</h3>
-                <p>Yapay zeka araçları sana zaman kazandırır ve daha profesyonel içerikler üretmene yardımcı olur! </p>
-                <ul style="margin-left: 20px; line-height: 2; margin-top: 10px;">
-                    <li>✨ Yaratıcı başlık fikirleri</li>
-                    <li>📝 Video açıklaması yazma</li>
-                    <li>#️⃣ Hashtag önerileri</li>
-                    <li>🎬 Video senaryosu oluşturma</li>
-                    <li>🔍 Trend konuları keşfetme</li>
-                </ul>
-            </div>
-            
-            <div class="content-box">
-                <h3>🤖 Kullanabileceğin Ücretsiz AI Araçları</h3>
-                <div class="app-list">
-                    <div class="app-card">
-                        <h4>ChatGPT</h4>
-                        <p>✅ ÜCRETSİZ<br>chat.openai.com<br>En popüler AI</p>
-                    </div>
-                    <div class="app-card">
-                        <h4>Google Gemini</h4>
-                        <p>✅ ÜCRETSİZ<br>gemini.google. com<br>Google'ın AI'ı</p>
-                    </div>
-                    <div class="app-card">
-                        <h4>Claude</h4>
-                        <p>✅ ÜCRETSİZ<br>claude.ai<br>Detaylı cevaplar</p>
-                    </div>
-                    <div class="app-card">
-                        <h4>Microsoft Copilot</h4>
-                        <p>✅ ÜCRETSİZ<br>copilot.microsoft.com<br>Bing entegreli</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="content-box">
-                <h3>📝 AI'ya Nasıl Soru Sorulur?  (Prompt Yazma)</h3>
-                <p><strong>İyi bir prompt 3 şey içermeli:</strong></p>
-                <ol style="margin-left:  20px; line-height:  2.5; margin-top: 10px;">
-                    <li><strong>Kim olduğunu söyle:</strong> "10 yaşında bir YouTuber'ım"</li>
-                    <li><strong>Ne istediğini açıkla:</strong> "Minecraft videosu için başlık lazım"</li>
-                    <li><strong>Detay ver:</strong> "Gizli kapı yapımı anlatacağım, emoji olsun"</li>
-                </ol>
-            </div>
-            
-            <div class="content-box">
-                <h3>💡 Hazır Prompt Şablonları</h3>
-                
-                <p><strong>📌 Video Başlığı İçin:</strong></p>
-                <div style="background: white; padding:  15px; border-radius:  10px; border-left:  4px solid #FF0000; margin: 10px 0;">
-                    <p style="font-style: italic; color: #333;">
-                        "10 yaşında bir YouTuber'ım. [KONU] hakkında video çekeceğim. Bana 10 adet ilgi çekici, kısa (5-7 kelime) ve emoji içeren video başlığı öner.  Hedef kitle çocuklar ve gençler."
-                    </p>
-                    <p style="margin-top: 10px; color: #666; font-size: 0.9em;">
-                        <strong>Örnek: </strong> [KONU] yerine "Minecraft'ta en güçlü kılıç yapımı" yaz
-                    </p>
-                </div>
-                
-                <p><strong>📝 Video Açıklaması İçin:</strong></p>
-                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #667eea; margin: 10px 0;">
-                    <p style="font-style: italic; color: #333;">
-                        "YouTube videom için açıklama yazısı yaz. Video başlığı:  [BAŞLIK]. Video içeriği: [KONU]. Açıklamada abone ol çağrısı, ilgili hashtag'ler ve videonun içeriği hakkında 3-4 cümle olsun."
-                    </p>
-                </div>
-                
-                <p><strong>#️⃣ Hashtag Önerileri İçin:</strong></p>
-                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #28a745; margin: 10px 0;">
-                    <p style="font-style: italic; color: #333;">
-                        "[KONU] hakkında çektiğim YouTube videosu için en popüler ve alakalı 15 hashtag öner. Hem Türkçe hem İngilizce hashtag'ler olsun."
-                    </p>
-                </div>
-                
-                <p><strong>🎬 Thumbnail Yazısı İçin:</strong></p>
-                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #ffc107; margin: 10px 0;">
-                    <p style="font-style: italic; color: #333;">
-                        "[KONU] hakkında YouTube thumbnail'i için 3-5 kelimelik, dikkat çekici ve büyük harflerle yazı önerileri ver. Emoji de ekle."
-                    </p>
-                </div>
-                
-                <p><strong>🎥 Video Senaryosu İçin:</strong></p>
-                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #764ba2; margin: 10px 0;">
-                    <p style="font-style: italic; color: #333;">
-                        "10 yaşındayım ve [KONU] hakkında 5 dakikalık YouTube videosu çekeceğim.  Bana baştan sona video senaryosu yaz. Giriş, ana içerik ve kapanış bölümlerini ayır.  Konuşma dilinde ve eğlenceli olsun."
-                    </p>
-                </div>
-            </div>
-            
-            <div class="content-box">
-                <h3>🎯 AI Kullanırken Dikkat Edilmesi Gerekenler</h3>
-                <ul class="checklist">
-                    <li onclick="toggleCheck(this)">📌 AI'nın verdiği cevapları olduğu gibi kullanma, kendi tarzına göre düzenle</li>
-                    <li onclick="toggleCheck(this)">🎨 Yaratıcılığını koru, AI sadece yardımcı olsun</li>
-                    <li onclick="toggleCheck(this)">✏️ AI'nın önerdiği başlıkları sen de düzenle ve geliştir</li>
-                    <li onclick="toggleCheck(this)">🔍 Ebeveyn izniyle kullan (bazı AI araçları yaş sınırı koyar)</li>
-                    <li onclick="toggleCheck(this)">💬 Eğer AI yeterince iyi cevap vermediyse, soruyu farklı şekilde sor</li>
-                </ul>
-            </div>
-            
-            <div class="content-box">
-                <h3>🚀 Pratik Örnek:  Adım Adım AI Kullanımı</h3>
-                <p><strong>Senaryo:</strong> Minecraft'ta kale yapımı videosu çekeceksin. </p>
-                <ol style="margin-left: 20px; line-height: 2.5; margin-top: 10px;">
-                    <li><strong>1.  Adım:</strong> ChatGPT veya Gemini'yi aç</li>
-                    <li><strong>2. Adım:</strong> Şu promptu yaz: 
-                        <div style="background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; font-style: italic;">
-                            "10 yaşında bir YouTuber'ım.  Minecraft'ta kale yapımı hakkında video çekeceğim.  Bana 10 adet ilgi çekici video başlığı öner."
-                        </div>
-                    </li>
-                    <li><strong>3. Adım:</strong> AI'nın önerilerini oku ve beğendiğin 2-3 tanesini seç</li>
-                    <li><strong>4. Adım:</strong> Seçtiğin başlıkları kendi tarzına göre düzenle</li>
-                    <li><strong>5. Adım:</strong> Hashtag için yeni prompt yaz:
-                        <div style="background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; font-style: italic;">
-                            "Minecraft kale yapımı videosu için 15 popüler hashtag öner"
-                        </div>
-                    </li>
-                    <li><strong>6. Adım:</strong> Thumbnail yazısı için sor ve hazırla! </li>
-                </ol>
-            </div>
-            
-            <div class="tip-box">
-                <strong>💡 PRO İPUCU:</strong> AI ile "sohbet et".  İlk cevap yeterli değilse "Daha kısa olabilir mi?" veya "Daha eğlenceli versiyonlarını yaz" diyerek tekrar sor.  AI öğrenecek ve daha iyi cevaplar verecek! 
-            </div>
-        </div>
-        
-        <!-- Adım 8: Kanal Büyütme -->
+        <!-- DERS 8: Video Başlığı ve Açıklama -->
         <div class="step" data-step="8">
             <div class="step-header">
-                <div class="step-number">ADIM 8 / 8</div>
-                <div class="step-title">📈 Kanalını Büyütme İpuçları</div>
+                <div class="step-number">DERS 8 / 10</div>
+                <div class="step-title">📝 Video Başlığı ve Açıklama Yazma</div>
             </div>
             
-            <div class="content-box">
-                <h3>🎯 Abone ve İzlenme Artırma</h3>
-                <p><strong>Düzenli İçerik Üret:</strong></p>
+            <div class="lesson-box">
+                <h3>📖 YouTube SEO (Arama Motoru Optimizasyonu)</h3>
+                <p>YouTube dünyanın 2.  en büyük arama motorudur (Google'dan sonra). İnsanlar YouTube'da arama yapar ve senin videon çıkmalı!  Bunun için <strong>SEO</strong> yapman gerekir.</p>
+                <p><strong>SEO nedir?</strong> Videonun YouTube arama sonuçlarında üst sıralarda çıkmasını sağlayan tekniklere denir. </p>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>🎯 İyi Bir Video Başlığının Formülü</h3>
+                <p>Profesyonel YouTuber'ların kullandığı başlık formülü:</p>
+                
+                <div class="example-box">
+                    <h4>📐 BAŞLIK FORMÜLÜ:</h4>
+                    <p style="font-size: 1.1em; margin:  15px 0;"><strong>[ANAHTAR KELİME] + [FAYDA/SONUÇ] + [EMOJİ/SAYISI]</strong></p>
+                    
+                    <p><strong>Örnekler:</strong></p>
+                    <ul style="margin-left: 20px; line-height: 2.5; margin-top: 10px;">
+                        <li>Minecraft Gizli Kapı Yapımı - 5 Dakikada Öğren!  🚪</li>
+                        <li>iPad Mini ile Video Düzenleme - Başlangıç Rehberi 📱</li>
+                        <li>Kutu Açılışı:  Yeni Oyuncak Seti İncelemesi!  📦😱</li>
+                        <li>Origami Kurbağa Yapımı - Adım Adım Kolay! 🐸</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box" style="margin-top: 20px;">
+                    <strong>📏 BAŞLIK KURALLARI:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>✅ 40-60 karakter ideal (çok uzun olmasın)</li>
+                        <li>✅ Önemli kelimeleri başa yaz</li>
+                        <li>✅ Sayı kullan (insanlar sayıları sever)</li>
+                        <li>✅ 1-2 emoji ekle</li>
+                        <li>✅ Merak uyandır ama yanıltma</li>
+                        <li>❌ TÜMÜ BÜYÜK HARF KULLANMA (spam gibi görünür)</li>
+                        <li>❌ Aşırı abartma (clickbait)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📄 Video Açıklaması Nasıl Yazılır? </h3>
+                <p>Video açıklaması, YouTube'un videonun ne hakkında olduğunu anlamasını sağlar. İyi bir açıklama: </p>
+                
+                <div class="example-box">
+                    <h4>📝 AÇIKLAMA ŞABLONU:</h4>
+                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; line-height: 2;">
+                        <p><strong>[İLK 2-3 CÜMLE:  Video konusunu özetle]</strong></p>
+                        <p style="margin-top: 10px;">Bu videoda [KONU] hakkında detaylı bilgi veriyorum. [FAİDASI] öğreneceksiniz! </p>
+                        
+                        <p style="margin-top: 15px;"><strong>📌 Videoda Anlatılanlar:</strong></p>
+                        <p>0:00 - Giriş<br>
+                        0:30 - [BÖLÜM 1]<br>
+                        2:15 - [BÖLÜM 2]<br>
+                        4:00 - Sonuç</p>
+                        
+                        <p style="margin-top: 15px;"><strong>🔗 Faydalı Linkler:</strong><br>
+                        [Kullandığım uygulama/araç linkleri]</p>
+                        
+                        <p style="margin-top: 15px;"><strong>📱 Kullandığım Ekipman:</strong><br>
+                        - iPad Mini<br>
+                        - [Düzenleme programı]</p>
+                        
+                        <p style="margin-top: 15px;"><strong>💬 Sosyal Medya:</strong><br>
+                        [Varsa sosyal medya hesapların]</p>
+                        
+                        <p style="margin-top: 15px;"><strong>🔔 Abone olmayı unutmayın!</strong></p>
+                        
+                        <p style="margin-top: 15px;">#[hashtag1] #[hashtag2] #[hashtag3]</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>#️⃣ Hashtag Kullanımı</h3>
+                <p>Hashtag'ler videonun bulunmasını kolaylaştırır. Doğru kullanım:</p>
                 <ul style="margin-left: 20px; line-height: 2;">
-                    <li>Haftada 1-2 video at (düzenlilik çok önemli)</li>
-                    <li>Aynı günlerde video paylaş (örnek: her Cumartesi)</li>
-                    <li>İzleyiciler ne zaman video geleceğini bilsin</li>
+                    <li><strong>3-5 hashtag yeterli</strong> (çok fazla spam sayılır)</li>
+                    <li><strong>Video konusuyla alakalı olmalı</strong></li>
+                    <li><strong>Hem genel hem özel hashtag kullan</strong></li>
+                    <li><strong>Türkçe ve İngilizce karışık kullanabilirsin</strong></li>
                 </ul>
                 
-                <p style="margin-top: 15px;"><strong>Kaliteli İçerik Yap:</strong></p>
+                <div class="example-box" style="margin-top: 15px;">
+                    <h4>💡 HASHTAG ÖRNEKLERİ: </h4>
+                    <p style="margin-top: 10px;"><strong>Oyun videosu için:</strong><br>
+                    #Minecraft #MinecraftTürkiye #Tutorial #Gaming #MinecraftTutorial</p>
+                    
+                    <p style="margin-top: 10px;"><strong>Kutu açılışı için:</strong><br>
+                    #KutuAçılışı #Unboxing #İnceleme #YeniÜrün #Review</p>
+                    
+                    <p style="margin-top: 10px;"><strong>Eğitim videosu için:</strong><br>
+                    #Eğitim #Tutorial #NasılYapılır #Öğren #HowTo</p>
+                </div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>✏️ Kendi Video Başlık ve Açıklamanı Oluştur</h3>
+                
+                <div class="form-group">
+                    <label>🎬 Video başlığın ne olacak?  (40-60 karakter ideal)</label>
+                    <input type="text" id="videoTitle" placeholder="Örnek:  Minecraft Gizli Kapı Yapımı - 5 Dakikada Öğren!  🚪" maxlength="100" />
+                    <small style="color: #666;">Karakter sayacı:  <span id="titleCounter">0</span>/100</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>📄 Video açıklaması (Yukarıdaki şablonu kullan)</label>
+                    <textarea id="videoDescriptionText" placeholder="Bu videoda...  (Şablonu kullanarak detaylı yaz)" style="min-height: 200px;"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>#️⃣ Hashtag'lerin (3-5 adet, # işareti ile)</label>
+                    <input type="text" id="videoHashtags" placeholder="#minecraft #tutorial #türkçe #gaming #nasılyapılır" />
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <strong>💡 PRO İPUCU:</strong> Başlığında kullandığın anahtar kelimeleri açıklamada da kullan. YouTube bunu sever ve videon daha üst sıralarda çıkar!
+            </div>
+            
+            <div class="success-box">
+                <strong>✅ Harika!</strong> Video başlığın ve açıklaman YouTube SEO için optimize edildi. Videon arama sonuçlarında daha iyi sıralarda çıkacak!
+            </div>
+        </div>
+        
+        <!-- DERS 9: YouTube'a Yükleme -->
+        <div class="step" data-step="9">
+            <div class="step-header">
+                <div class="step-number">DERS 9 / 10</div>
+                <div class="step-title">⬆️ YouTube'a Video Yükleme</div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📺 YouTube Kanalı Oluşturma</h3>
+                <p><strong>⚠️ ÖNEMLİ BİLGİLER:</strong></p>
                 <ul style="margin-left:  20px; line-height:  2;">
-                    <li>Ses ve görüntü kalitesine dikkat et</li>
-                    <li>İlginç konular seç</li>
-                    <li>Eğlenceli ve enerjik ol</li>
-                    <li>Videoların 5-10 dakika olsun (çok uzun olmasın)</li>
+                    <li>YouTube kullanmak için <strong>13 yaşında veya üzeri</strong> olman gerekiyor</li>
+                    <li>13 yaş altındaysan, ebeveyn hesabı ile çalışmalısın</li>
+                    <li>Tüm işlemleri ebeveyn denetiminde yap</li>
                 </ul>
+                
+                <div class="warning-box" style="margin-top: 15px;">
+                    <strong>👨‍👩‍👧 EBEVEYN İÇİN NOT:</strong> YouTube'da çocuk güvenliği çok önemlidir. Yorumları kapatabilir, çocuğunuzun kişisel bilgilerini gizleyebilir ve içerik yükleme öncesi onay sistemi kurabilirsiniz.  YouTube Studio → Ayarlar → Gizlilik bölümünden ayarları yapın.
+                </div>
             </div>
             
-            <div class="content-box">
-                <h3>💬 İzleyicilerle İletişim</h3>
+            <div class="lesson-box">
+                <h3>🎬 Kanal Kurulumu:  Adım Adım</h3>
+                <ol style="margin-left: 20px; line-height: 2. 5;">
+                    <li><strong>YouTube uygulamasını aç</strong> (iPad'inde kurulu olmalı)</li>
+                    <li><strong>Sağ üstteki profil resmine tıkla</strong></li>
+                    <li><strong>"Kanal oluştur" seçeneğini seç</strong></li>
+                    <li><strong>Kanal adını belirle: </strong>
+                        <ul style="margin-top: 10px;">
+                            <li>Kısa ve akılda kalıcı olsun</li>
+                            <li>Söylemesi kolay olsun</li>
+                            <li>İçerik türünü yansıtsın (isteğe bağlı)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Profil fotoğrafı ekle: </strong>
+                        <ul style="margin-top: 10px;">
+                            <li>Logo veya karakterin olabilir</li>
+                            <li>Yüzünü göstermek zorunda değilsin</li>
+                            <li>500x500 piksel ideal boyut</li>
+                        </ul>
+                    </li>
+                    <li><strong>Kanal açıklaması yaz:</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>Kanalında ne tür videolar olacağını anlat</li>
+                            <li>2-3 cümle yeterli</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📤 Video Yükleme:  Adım Adım</h3>
+                <p>Artık videonuzu yüklemeye hazırsınız!</p>
+                
+                <ol style="margin-left: 20px; line-height: 2.5;">
+                    <li><strong>YouTube uygulamasında "+" butonuna tıkla</strong> (alt ortadaki büyük buton)</li>
+                    <li><strong>"Video yükle" seçeneğini seç</strong></li>
+                    <li><strong>Düzenlediğin videoyu galerisinden seç</strong></li>
+                    <li><strong>Video yüklenmeye başlar</strong> (süre video boyutuna göre değişir)</li>
+                    <li><strong>Yükleme sırasında bilgileri doldur: </strong></li>
+                </ol>
+                
+                <div class="info-box" style="margin-top: 20px;">
+                    <strong>📝 DOLDURMANIZ GEREKEN BİLGİLER:</strong>
+                    <ol style="margin-top: 10px; margin-left: 20px; line-height: 2;">
+                        <li><strong>Başlık:</strong> Ders 8'de oluşturduğun başlığı kullan</li>
+                        <li><strong>Açıklama:</strong> Ders 8'de oluşturduğun açıklamayı kopyala</li>
+                        <li><strong>Thumbnail:</strong> "Özel thumbnail ekle" butonuna tıkla ve Ders 7'de yaptığın thumbnail'i yükle</li>
+                        <li><strong>Oynatma listesi:</strong> (İsteğe bağlı) Benzer videoları grupla</li>
+                        <li><strong>Gizlilik ayarı seç:</strong>
+                            <ul style="margin-top: 5px;">
+                                <li><strong>Genel: </strong> Herkes görebilir</li>
+                                <li><strong>Gizli:</strong> Linki olan görebilir</li>
+                                <li><strong>Özel:</strong> Sadece sen görebilirsin</li>
+                            </ul>
+                        </li>
+                        <li><strong>Hedef kitle:</strong> "Çocuklara yönelik mi?" sorusunu dürüstçe cevapla</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>⚙️ Gelişmiş Ayarlar (Opsiyonel)</h3>
+                <p>"Daha fazla seçenek" kısmından erişebilirsin:</p>
                 <ul style="margin-left: 20px; line-height: 2;">
-                    <li><strong>Yorumları oku ve yanıtla: </strong> İnsanlar senle iletişime geçmekten hoşlanır</li>
-                    <li><strong>Soru sor:</strong> Video sonunda "sizce ne yapmalıyım?" gibi sorular sor</li>
-                    <li><strong>Teşekkür et:</strong> Her videoda izleyicilere teşekkür et</li>
-                    <li><strong>İstek al:</strong> "Hangi videoyu görmek istersiniz?" diye sor</li>
+                    <li><strong>Yorumlar ve derecelendirmeler:</strong> Yorumları kapatabilirsin</li>
+                    <li><strong>Yaş sınırı:</strong> Gerekirse yaş sınırı koy</li>
+                    <li><strong>Yayın kategorisi:</strong> Video türünü seç (Oyun, Eğitim vb.)</li>
+                    <li><strong>Altyazı:</strong> Otomatik altyazı eklenebilir</li>
+                    <li><strong>Son ekran ve kartlar:</strong> İleri seviye özellik, şimdilik geçebilirsin</li>
                 </ul>
             </div>
             
-            <div class="content-box">
-                <h3>🔍 YouTube SEO (Aranabilirlik)</h3>
-                <p>Videolarının daha kolay bulunması için:</p>
+            <div class="warning-box">
+                <strong>⚠️ İLK VIDEO TAVSİYESİ:</strong> İlk videonu "Gizli" olarak yükle!  Ailenle birlikte izleyin, kontrol edin.  Her şey yolundaysa "Genel" yaparsınız.  Bu şekilde hata yapma riskini azaltırsın.
+            </div>
+            
+            <div class="lesson-box">
+                <h3>✅ Yükleme Tamamlandı!  Şimdi Ne Yapmalısın?</h3>
+                <ol style="margin-left: 20px; line-height: 2.5;">
+                    <li><strong>Videoyu izle:</strong> Her şeyin doğru göründüğünden emin ol</li>
+                    <li><strong>Link'i kopyala:</strong> Arkadaşlarınla paylaşmak için</li>
+                    <li><strong>Sosyal medyada paylaş:</strong> (Varsa) Instagram, Twitter'da duyur</li>
+                    <li><strong>Ailene göster:</strong> İlk izleyicilerin onlar olsun! </li>
+                    <li><strong>İstatistikleri takip et:</strong> YouTube Studio'dan izlenme sayılarını gör</li>
+                </ol>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📝 Yükleme Planını Oluştur</h3>
+                
+                <div class="form-group">
+                    <label>📺 Kanal adın ne olacak? </label>
+                    <input type="text" id="channelName" placeholder="Örnek:  Ali'nin Minecraft Dünyası" />
+                </div>
+                
+                <div class="form-group">
+                    <label>🔒 İlk videon hangi gizlilik ayarıyla yayınlanacak?</label>
+                    <select id="privacySettings">
+                        <option value="">Seç...</option>
+                        <option value="private">Özel (sadece ben göreceğim - TEST)</option>
+                        <option value="unlisted">Gizli (link ile paylaşacağım - TAVSİYE)</option>
+                        <option value="public">Genel (herkes görecek)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>💬 Yorumları açık mı tutacaksın?</label>
+                    <select id="commentsSettings">
+                        <option value="">Seç...</option>
+                        <option value="off">Kapalı (daha güvenli)</option>
+                        <option value="moderated">Onaylı (ben onayladıkça yayınlanır - TAVSİYE)</option>
+                        <option value="on">Açık (herkes yorum yazabilir)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="success-box">
+                <strong>🎉 Tebrikler! </strong> Videon YouTube'a yüklenmeye hazır!  Bir adım kaldı... 
+            </div>
+        </div>
+        
+        <!-- DERS 10: Kanal Büyütme Stratejisi -->
+        <div class="step" data-step="10">
+            <div class="step-header">
+                <div class="step-number">DERS 10 / 10</div>
+                <div class="step-title">📈 Kanal Büyütme ve Başarı Stratejileri</div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>📊 YouTube Algoritması Nasıl Çalışır? </h3>
+                <p>YouTube'un bir "beyni" var (algoritma) ve hangi videoları öne çıkaracağına karar veriyor. Bu beyni mutlu etmek için:</p>
                 <ul style="margin-left: 20px; line-height: 2;">
-                    <li><strong>Anahtar kelimeler:</strong> Başlığa önemli kelimeleri koy</li>
-                    <li><strong>Hashtag kullan:</strong> #minecraft #tutorial gibi etiketler ekle</li>
-                    <li><strong>Açıklama doldur:</strong> Video hakkında detaylı bilgi ver</li>
-                    <li><strong>Oynatma listeleri:</strong> Benzer videoları bir araya topla</li>
+                    <li><strong>İzlenme süresi:</strong> İnsanlar videonun tamamını izlemeli</li>
+                    <li><strong>Tıklama oranı:</strong> Thumbnail'ine tıklanma oranı yüksek olmalı</li>
+                    <li><strong>Etkileşim:</strong> Beğeni, yorum, paylaşım almalısın</li>
+                    <li><strong>Düzenlilik:</strong> Düzenli video atmalısın</li>
+                    <li><strong>İzleyici sadakati:</strong> İnsanlar diğer videolarını da izlemeli</li>
                 </ul>
             </div>
             
-            <div class="content-box">
-                <h3>📊 YouTube Analytics (İstatistikler)</h3>
-                <p>Kanalının performansını takip et:</p>
+            <div class="lesson-box">
+                <h3>🎯 Kanal Büyütmenin 10 Altın Kuralı</h3>
+                
+                <div class="info-box">
+                    <strong>1️⃣ DÜZENLI İÇERİK ÜRET</strong>
+                    <p style="margin-top: 10px;">Haftada 1-2 video at.  Düzenlilik, algoritmanın en sevdiği şey!  Belirli günlerde paylaş (örnek: her Cumartesi saat 10:00). İzleyiciler alışkanlık kazanır.</p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>2️⃣ İLK 10 SANİYE BOMBASI GİBİ OLMALI</strong>
+                    <p style="margin-top: 10px;">İnsanlar videoyu ilk 10 saniyede terk eder. Hemen konuya gir, enerji ile başla! "Merhaba, bugün size şunu göstereceğim..." yerine "BUNU GÖRMELİSİN!" de ve direkt başla.</p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>3️⃣ HAREKETE GEÇME ÇAĞRISI YAP (Call to Action)</strong>
+                    <p style="margin-top:  10px;">Her videoda şunu söyle: "Beğenmeyi, abone olmayı ve bildirimleri açmayı unutmayın!" İnsanlara ne yapması gerektiğini söyle.</p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>4️⃣ YORUMLARI OKU VE CEVAPLA</strong>
+                    <p style="margin-top: 10px;">Her yorumu oku ve mümkün olduğunca cevapla.  İnsanlar kendilerini özel hisseder ve tekrar gelir.  İlk saatlerde yorum cevaplaman çok önemli! </p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>5️⃣ TREND KONULARI TAKİP ET</strong>
+                    <p style="margin-top: 10px;">YouTube'da "Trendler" bölümünü izle. Popüler olan konularla ilgili video yap.  Ama sadece kopya çekme, kendi tarzını kat! </p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>6️⃣ OYNATMA LİSTELERİ OLUŞTUR</strong>
+                    <p style="margin-top: 10px;">Benzer videoları oynatma listesinde topla. İnsanlar bir video bitince diğerine geçer. İzlenme süresi artar! </p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>7️⃣ DİĞER YOUTUBER'LARLA İŞBİRLİĞİ YAP</strong>
+                    <p style="margin-top:  10px;">Senin gibi küçük kanallarla işbirliği yap. Birbirinizin kanalından bahsedin. Her ikiniz de yeni izleyici kazanır!</p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>8️⃣ ANALİTİKLERİ TAKİP ET</strong>
+                    <p style="margin-top:  10px;">YouTube Studio → Analytics.  Hangi videolar iyi gidiyor? Daha fazlasını yap! Hangi saatlerde izlenme fazla?  O saatlerde yükle! </p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>9️⃣ KALİTEYİ HİÇBİR ZAMAN FİDA ETME</strong>
+                    <p style="margin-top: 10px;">Düzenli video atmak için kalitesiz video atma. 1 hafta bekle ama kaliteli yap. İzleyiciler kaliteyi fark eder. </p>
+                </div>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>🔟 SABIR VE İSTİKRAR</strong>
+                    <p style="margin-top: 10px;">İlk aylar zor!  Belki 10-50 izlenme alırsın. Ama vazgeçme! Düzenli devam et, 6 ay sonra bak ne kadar yol almışsın!</p>
+                </div>
+            </div>
+            
+            <div class="lesson-box">
+                <h3>💰 Para Kazanma Hakkında Gerçekler</h3>
+                <p><strong>YouTube Ortak Programı (YPP) Gereksinimleri:</strong></p>
                 <ul style="margin-left: 20px; line-height: 2;">
-                    <li><strong>İzlenme süresi:</strong> İnsanlar videonun ne kadarını izliyor? </li>
-                    <li><strong>En çok izlenen videolar:</strong> Hangi videolar daha popüler?</li>
-                    <li><strong>Trafik kaynakları:</strong> İnsanlar videonu nasıl buluyor?</li>
-                    <li><strong>İzleyici demografisi:</strong> Kim izliyor?  (yaş, ülke)</li>
-                </ul>
-                <p style="margin-top: 10px;"><strong>Nasıl ulaşılır? </strong> YouTube Studio → Analytics</p>
-            </div>
-            
-            <div class="content-box">
-                <h3>💰 Para Kazanma Hakkında</h3>
-                <p><strong>YouTube'dan para kazanmak için gereken şartlar:</strong></p>
-                <ul style="margin-left:  20px; line-height:  2;">
                     <li>✅ En az 1.000 abone</li>
-                    <li>✅ Son 12 ayda 4. 000 saat izlenme</li>
-                    <li>✅ 18 yaşından büyük olmak (veya ebeveyn hesabı)</li>
-                    <li>✅ YouTube Ortak Programı'na başvuru</li>
+                    <li>✅ Son 12 ayda 4.000 saat izlenme VEYA son 90 günde 10 milyon Shorts izlenmesi</li>
+                    <li>✅ 18 yaşında olma (veya ebeveyn AdSense hesabı)</li>
                     <li>✅ YouTube politikalarına uygun içerik</li>
                 </ul>
-                <p style="margin-top:  15px;"><strong>💡 Şimdilik: </strong> Para kazanmayı düşünme!  İlk hedefin kaliteli içerik üretmek ve eğlenmek olsun.  Başarı gelirse para da gelir.  Sabırlı ol!  🚀</p>
-            </div>
-            
-            <div class="content-box">
-                <h3>🎮 Güvenlik ve Etik Kurallar</h3>
-                <p><strong>⚠️ ÇOK ÖNEMLİ - Mutlaka Oku! </strong></p>
-                <ul style="margin-left: 20px; line-height: 2. 5;">
-                    <li>🔒 <strong>Kişisel bilgi paylaşma: </strong> Adresini, telefon numaranı, okul adını söyleme</li>
-                    <li>👤 <strong>Yüzünü gösterme:</strong> İlk başta istersen sadece sesini kullan</li>
-                    <li>👨‍👩‍👧 <strong>Ebeveyn denetimi:</strong> Her videoyu yüklemeden önce ailene göster</li>
-                    <li>💬 <strong>Yorumlara dikkat:</strong> Olumsuz yorumlara üzülme, ebeveynle görüş</li>
-                    <li>🚫 <strong>Telif hakları:</strong> Başkasının müziğini veya görüntüsünü izinsiz kullanma</li>
-                    <li>🤝 <strong>Saygılı ol:</strong> Videolarında kimseyi rahatsız etme veya dalga geçme</li>
-                    <li>⏰ <strong>Süre yönetimi:</strong> Video çekimi ders ve ödevlerini aksatmasın</li>
+                
+                <div class="warning-box" style="margin-top: 15px;">
+                    <strong>💡 GERÇEKÇİ OLALIM: </strong> Para kazanmak için ortalama 6-12 ay gerekir.  İlk başta para için yapma, eğlence ve öğrenme için yap. Başarı gelirse para da gelir.  Sabırlı ol!
+                </div>
+                
+                <p style="margin-top: 15px;"><strong>Ortalama kazançlar (bilgi amaçlı):</strong></p>
+                <ul style="margin-left: 20px; line-height: 2; margin-top: 5px;">
+                    <li>1.000 izlenme = 1-5 TL (konu ve ülkeye göre değişir)</li>
+                    <li>İlk ay kazanç:  0-100 TL</li>
+                    <li>6.  ay kazanç: 200-1.000 TL (başarılı isen)</li>
+                    <li>1 yıl sonra: 500-5.000 TL (çok başarılı isen)</li>
                 </ul>
             </div>
             
-            <div class="tip-box">
-                <strong>💡 EN ÖNEMLİ İPUCU:</strong> Sabırlı ol! Hiçbir YouTuber bir gecede ünlü olmadı. Düzenli video at, kendini geliştir ve vazgeçme. Her video bir öncekinden daha iyi olacak.  Sen yapabilirsin!  🌟
+            <div class="lesson-box">
+                <h3>🛡️ Güvenlik ve Etik Kuralları (ÇOK ÖNEMLİ! )</h3>
+                <div class="warning-box">
+                    <strong>⚠️ ASLA YAPMA:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 2;">
+                        <li>❌ Kişisel bilgi paylaşma (adres, telefon, okul adı)</li>
+                        <li>❌ Yüzünü göstermek zorunda değilsin (avatar kullanabilirsin)</li>
+                        <li>❌ Tanımadığın insanlarla buluşma</li>
+                        <li>❌ Olumsuz yorumlara sert cevap verme (görmezden gel)</li>
+                        <li>❌ Telif hakkı ihlali yapma (başkasının müziği, videosu)</li>
+                        <li>❌ Kimseyi rahatsız etme, dalga geçme</li>
+                        <li>❌ Tehlikeli görevler yapma (trafik, yükseklik vb.)</li>
+                    </ul>
+                </div>
+                
+                <div class="success-box" style="margin-top: 15px;">
+                    <strong>✅ HER ZAMAN YAP: </strong>
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 2;">
+                        <li>✅ Ebeveyn izni al ve denetiminde çalış</li>
+                        <li>✅ Saygılı ve nazik ol</li>
+                        <li>✅ Dürüst içerik üret</li>
+                        <li>✅ Ödevlerini ihmal etme</li>
+                        <li>✅ Eleştirilere açık ol ve öğren</li>
+                        <li>✅ Telif kurallarına uy</li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="final-message">
-                <h2>🎉 Tebrikler! </h2>
-                <p>Artık YouTube içerik üreticisi olmanın tüm adımlarını öğrendin! <br><br>
-                <strong>8 adımı tamamladın:</strong><br>
-                ✅ Hazırlık<br>
-                ✅ Video Fikri<br>
-                ✅ Video Çekimi<br>
-                ✅ Video Düzenleme<br>
-                ✅ Thumbnail Hazırlama<br>
-                ✅ YouTube'a Yükleme<br>
-                ✅ Yapay Zeka Kullanımı<br>
-                ✅ Kanal Büyütme<br><br>
-                Unutma:  En önemli şey <strong>eğlenmek</strong> ve <strong>yaratıcı olmak</strong>. <br>
-                İlk videonu çekmeye başla ve deneyim kazan! <br><br>
-                <strong style="font-size: 1.3em;">Başarılar!  🚀📹🎬</strong></p>
+            <div class="lesson-box">
+                <h3>📝 Kanal Büyütme Planını Oluştur</h3>
+                
+                <div class="form-group">
+                    <label>📅 Haftada kaç video atacaksın?</label>
+                    <select id="uploadFrequency">
+                        <option value="">Seç...</option>
+                        <option value="1">Haftada 1 video</option>
+                        <option value="2">Haftada 2 video (TAVSİYE)</option>
+                        <option value="3">Haftada 3+ video</option>
+                        <option value="biweekly">2 haftada 1 video</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>🎯 1 yıl sonraki hedefin ne? </label>
+                    <select id="yearGoal">
+                        <option value="">Seç...</option>
+                        <option value="100">100 abone</option>
+                        <option value="500">500 abone</option>
+                        <option value="1000">1.000 abone (YPP için! )</option>
+                        <option value="5000">5.000 abone</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>💡 Gelecek 3 videonda hangi konuları işleyeceksin?</label>
+                    <textarea id="futureContent" placeholder="Örnek: &#10;1. [Konu 1]&#10;2. [Konu 2]&#10;3. [Konu 3]"></textarea>
+                </div>
+            </div>
+            
+            <div class="final-report">
+                <div class="certificate">
+                    <h2>🎓 TEBRİKLER! </h2>
+                    <p style="font-size: 1.3em; margin:  20px 0;">YouTube İçerik Üretimi Akademisini Tamamladın!</p>
+                    <p><strong id="completionName"></strong>, artık profesyonel bir YouTube içerik üreticisisin! </p>
+                    <p style="margin-top: 20px; font-size: 1.1em;">📹 10 Dersi Tamamladın<br>
+                    ✅ Video Üretim Planı Oluşturdun<br>
+                    🚀 Başarıya Hazırsın! </p>
+                </div>
+                
+                <div class="data-summary" style="text-align: left;">
+                    <h3>📋 Senin Video Üretim Planın: </h3>
+                    <div id="finalSummary"></div>
+                </div>
+                
+                <button class="btn-download" onclick="downloadPlan()">
+                    📥 Video Üretim Planımı İndir (PDF)
+                </button>
+                
+                <div class="success-box" style="margin-top:  30px;">
+                    <strong>🎬 ŞİMDİ NE YAPMALISIN?</strong>
+                    <ol style="margin-top: 10px; margin-left: 20px; line-height: 2. 5; text-align: left;">
+                        <li>Bu planı indir ve iPad'inde sakla</li>
+                        <li>Ebeveynlerinle birlikte planı gözden geçir</li>
+                        <li>Gerekli uygulamaları indir (CapCut, Canva vb.)</li>
+                        <li>İlk videonun çekimini planla</li>
+                        <li>ÇEKİME BAŞLA!  🎥</li>
+                    </ol>
+                </div>
+                
+                <p style="margin-top: 30px; font-size: 1.2em; color: #667eea;"><strong>Unutma:  Her büyük YouTuber bir zamanlar senin gibi başladı.  Sen de yapabilirsin!  🌟</strong></p>
             </div>
         </div>
         
         <div class="button-group">
-            <button class="btn-prev" onclick="prevStep()" id="prevBtn">⬅️ Önceki</button>
-            <button class="btn-next" onclick="nextStep()" id="nextBtn">Sonraki ➡️</button>
+            <button class="btn-prev" onclick="prevStep()" id="prevBtn" style="display: none;">⬅️ Önceki Ders</button>
+            <button class="btn-next" onclick="nextStep()" id="nextBtn">Sonraki Ders ➡️</button>
         </div>
     </div>
     
     <script>
-        let currentStep = 1;
-        const totalSteps = 8;
+        // Veri Depolama
+        let userData = {
+            name: '',
+            age: '',
+            contentType: '',
+            videoTopic: '',
+            videoDescription: '',
+            videoDuration: '',
+            introScript: '',
+            mainScript: '',
+            outroScript: '',
+            thumbnailImage: '',
+            thumbnailText: '',
+            thumbnailColors: '',
+            thumbnailEmojis: '',
+            musicType: '',
+            cutPlan: '',
+            textPlan: '',
+            videoTitle: '',
+            videoDescriptionText: '',
+            videoHashtags: '',
+            channelName: '',
+            privacySettings: '',
+            commentsSettings: '',
+            uploadFrequency: '',
+            yearGoal: '',
+            futureContent: ''
+        };
         
+        let currentStep = 1;
+        const totalSteps = 10;
+        
+        // İlerleme Çubuğu Güncelle
         function updateProgress() {
             const progress = (currentStep / totalSteps) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Ders ${currentStep} / ${totalSteps}`;
         }
         
+        // Adım Göster
         function showStep(step) {
-            document.querySelectorAll('.step').forEach(s => s.classList. remove('active'));
-            document. querySelector(`[data-step="${step}"]`).classList.add('active');
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.querySelector(`[data-step="${step}"]`).classList.add('active');
             
-            document.getElementById('prevBtn').disabled = step === 1;
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.style.display = step === 1 ? 'none' : 'block';
             
             if (step === totalSteps) {
-                document. getElementById('nextBtn').textContent = '🏁 Tamamla';
+                nextBtn.style.display = 'none';
             } else {
-                document.getElementById('nextBtn').textContent = 'Sonraki ➡️';
+                nextBtn.style.display = 'block';
+                nextBtn.textContent = 'Sonraki Ders ➡️';
             }
             
             updateProgress();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            saveProgress();
         }
         
+        // Sonraki Adım
         function nextStep() {
+            // Veri kaydet
+            saveUserData();
+            
+            // Doğrulama
+            if (! validateCurrentStep()) {
+                return;
+            }
+            
             if (currentStep < totalSteps) {
                 currentStep++;
+                
+                // İçerik türüne göre özel rehber ekle
+                if (currentStep === 3) {
+                    addContentSpecificGuide();
+                }
+                if (currentStep === 4) {
+                    addContentSpecificPrep();
+                }
+                if (currentStep === 5) {
+                    addContentSpecificShooting();
+                }
+                if (currentStep === 7) {
+                    addContentSpecificThumbnail();
+                }
+                
                 showStep(currentStep);
-            } else {
-                alert('🎉 Tebrikler! Rehberi tamamladın!  Artık ilk videonu çekmeye hazırsın!  iPad Mini\'nle harika işler başaracaksın!  🚀');
             }
         }
         
+        // Önceki Adım
         function prevStep() {
             if (currentStep > 1) {
                 currentStep--;
@@ -1412,40 +1765,670 @@
             }
         }
         
+        // Kontrol Listesi Toggle
         function toggleCheck(element) {
-            element.classList. toggle('checked');
+            element.classList.toggle('checked');
         }
         
-        // İlerlemeyi kaydet
+        // İçerik Türü Seç
+        function selectContentType(type) {
+            document.querySelectorAll('.selection-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.target.closest('.selection-card').classList.add('selected');
+            userData.contentType = type;
+            document.getElementById('contentTypeDetails').style.display = 'block';
+            saveUserData();
+        }
+        
+        // Mevcut Adım Doğrulama
+        function validateCurrentStep() {
+            if (currentStep === 1) {
+                const name = document.getElementById('userName').value;
+                const age = document.getElementById('userAge').value;
+                if (!name || !age) {
+                    alert('🙋 Lütfen adını ve yaşını gir!');
+                    return false;
+                }
+            }
+            
+            if (currentStep === 2) {
+                if (!userData.contentType) {
+                    alert('🎬 Lütfen bir içerik türü seç!');
+                    return false;
+                }
+            }
+            
+            if (currentStep === 3) {
+                const topic = document.getElementById('videoTopic').value;
+                const desc = document.getElementById('videoDescription').value;
+                if (!topic || !desc) {
+                    alert('📝 Lütfen video konunu ve açıklamasını yaz!');
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+        
+        // Kullanıcı Verisini Kaydet
+        function saveUserData() {
+            userData.name = document.getElementById('userName')?.value || userData.name;
+            userData.age = document.getElementById('userAge')?.value || userData.age;
+            userData.videoTopic = document.getElementById('videoTopic')?.value || userData. videoTopic;
+            userData. videoDescription = document.getElementById('videoDescription')?.value || userData.videoDescription;
+            userData.videoDuration = document.getElementById('videoDuration')?.value || userData.videoDuration;
+            userData.introScript = document.getElementById('introScript')?.value || userData.introScript;
+            userData.mainScript = document.getElementById('mainScript')?.value || userData.mainScript;
+            userData.outroScript = document.getElementById('outroScript')?.value || userData.outroScript;
+            userData.thumbnailImage = document.getElementById('thumbnailImage')?.value || userData.thumbnailImage;
+            userData.thumbnailText = document.getElementById('thumbnailText')?.value || userData.thumbnailText;
+            userData.thumbnailColors = document.getElementById('thumbnailColors')?.value || userData.thumbnailColors;
+            userData.thumbnailEmojis = document.getElementById('thumbnailEmojis')?.value || userData.thumbnailEmojis;
+            userData.musicType = document.getElementById('musicType')?.value || userData.musicType;
+            userData.cutPlan = document.getElementById('cutPlan')?.value || userData.cutPlan;
+            userData.textPlan = document.getElementById('textPlan')?.value || userData.textPlan;
+            userData.videoTitle = document.getElementById('videoTitle')?.value || userData.videoTitle;
+            userData.videoDescriptionText = document.getElementById('videoDescriptionText')?.value || userData.videoDescriptionText;
+            userData. videoHashtags = document.getElementById('videoHashtags')?.value || userData.videoHashtags;
+            userData.channelName = document.getElementById('channelName')?.value || userData.channelName;
+            userData.privacySettings = document.getElementById('privacySettings')?.value || userData. privacySettings;
+            userData.commentsSettings = document.getElementById('commentsSettings')?.value || userData.commentsSettings;
+            userData.uploadFrequency = document.getElementById('uploadFrequency')?.value || userData.uploadFrequency;
+            userData.yearGoal = document.getElementById('yearGoal')?.value || userData.yearGoal;
+            userData.futureContent = document.getElementById('futureContent')?.value || userData. futureContent;
+            
+            localStorage.setItem('youtubeAcademyData', JSON.stringify(userData));
+        }
+        
+        // İlerlemeyi Kaydet
         function saveProgress() {
-            localStorage.setItem('youtubeGuideProgress', currentStep);
+            localStorage.setItem('youtubeAcademyProgress', currentStep);
         }
         
-        // İlerlemeyi yükle
+        // İlerlemeyi Yükle
         function loadProgress() {
-            const saved = localStorage.getItem('youtubeGuideProgress');
+            const saved = localStorage. getItem('youtubeAcademyProgress');
+            const savedData = localStorage.getItem('youtubeAcademyData');
+            
             if (saved) {
-                currentStep = parseInt(saved);
-                showStep(currentStep);
+                const wantContinue = confirm('📚 Daha önce başladığın bir eğitim var. Kaldığın yerden devam etmek ister misin?');
+                if (wantContinue) {
+                    currentStep = parseInt(saved);
+                    if (savedData) {
+                        userData = JSON.parse(savedData);
+                    }
+                    showStep(currentStep);
+                    return;
+                }
+            }
+            updateProgress();
+        }
+        
+        // İçerik Türüne Göre Özel Rehber
+        function addContentSpecificGuide() {
+            const guideDiv = document.getElementById('contentSpecificGuide');
+            let guideHTML = '';
+            
+            const guides = {
+                gaming: {
+                    title: '🎮 Oyun Videoları İçin Özel İpuçları',
+                    tips: [
+                        'Ekran kaydı için iOS\'un kendi "Ekran Kaydı" özelliğini kullan (Kontrol Merkezi\'nden)',
+                        'Oynarken konuş!  Sessiz oyun videosu sıkıcıdır',
+                        'Komik anları, başarıları ve epiği anları vurgula',
+                        'Hangi oyunu oynadığını başlıkta belirt'
+                    ]
+                },
+                unboxing: {
+                    title: '📦 Kutu Açılışı İçin Özel İpuçları',
+                    tips:  [
+                        'Kutuyu açmadan önce dışını göster ve tanıt',
+                        'Yavaş ve dikkatli aç, heyecanını göster',
+                        'Her parçayı detaylı göster ve yorumla',
+                        'Son değerlendirmeni yap:  beğendin mi, tavsiye eder misin? '
+                    ]
+                },
+                vlog: {
+                    title:  '📹 Vlog İçin Özel İpuçları',
+                    tips:  [
+                        'Gününü ilginç kısımlarını çek (sıradan anlar sıkıcı)',
+                        'Kameraya konuşarak ne yaptığını anlat',
+                        'Farklı lokasyonlarda çekim yap (evde, dışarda vb.)',
+                        'Senin günlük hayatındaki özel, eğlenceli anları yakala'
+                    ]
+                },
+                tutorial: {
+                    title: '📚 Eğitim Videoları İçin Özel İpuçları',
+                    tips: [
+                        'Adım adım, yavaş ve net anlat',
+                        'Her adımda durakla, izleyici takip etsin',
+                        'Gerekli malzemeleri video başında listele',
+                        'Yaygın hataları ve ipuçlarını paylaş'
+                    ]
+                },
+                review: {
+                    title: '⭐ İnceleme Videoları İçin Özel İpuçları',
+                    tips: [
+                        'Hem olumlu hem olumsuz yönleri dürüstçe anlat',
+                        'Fiyat/performans değerlendirmesi yap',
+                        'Alternatifleri öner',
+                        'Puanlama sistemi kullan (5/10 gibi)'
+                    ]
+                },
+                challenge: {
+                    title: '🏆 Challenge Videoları İçin Özel İpuçları',
+                    tips: [
+                        'Challenge kurallarını net açıkla',
+                        'Zamanını veya sonucunu göster',
+                        'Eğlenceli ol, gül, heyecanını göster',
+                        'İzleyicileri challenge\'a davet et'
+                    ]
+                },
+                art: {
+                    title: '🎨 Sanat Videoları İçin Özel İpuçları',
+                    tips: [
+                        'Time-lapse (hızlandırılmış) çekim yap',
+                        'Kullandığın malzemeleri göster',
+                        'Teknik ipuçlarını paylaş',
+                        'Başlangıç ve sonucu karşılaştır'
+                    ]
+                },
+                boardgame: {
+                    title: '🎲 Kutu Oyunu Videoları İçin Özel İpuçları',
+                    tips: [
+                        'Oyun kurallarını basit şekilde anlat',
+                        'Oynarken kameraya konuş',
+                        'Stratejilerini paylaş',
+                        'Oyun sonunda kazananı kutla!'
+                    ]
+                },
+                cooking: {
+                    title: '🍳 Yemek Videoları İçin Özel İpuçları',
+                    tips: [
+                        'Malzemeleri başta listele ve göster',
+                        'Her adımı net göster (ellerin ve malzemeler görünmeli)',
+                        'Pişme sürelerini belirt',
+                        'Sonunda lezzeti yorumla ve tadını çıkar!'
+                    ]
+                },
+                other: {
+                    title: '💡 Genel İpuçları',
+                    tips: [
+                        'Benzersiz ve yaratıcı ol',
+                        'İzleyicinin merak edeceği içerik yap',
+                        'Eğlenerek üret, bu vidoda belli olur',
+                        'Kendi tarzını bul ve onu geliştir'
+                    ]
+                }
+            };
+            
+            const guide = guides[userData.contentType] || guides.other;
+            
+            guideHTML = `
+                <div class="lesson-box">
+                    <h3>${guide.title}</h3>
+                    <ul style="margin-left: 20px; line-height: 2;">
+                        ${guide.tips.map(tip => `<li>${tip}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            guideDiv. innerHTML = guideHTML;
+        }
+        
+        // İçerik Türüne Göre Hazırlık Rehberi
+        function addContentSpecificPrep() {
+            const prepDiv = document.getElementById('contentSpecificPrep');
+            let prepHTML = '';
+            
+            if (userData.contentType === 'gaming') {
+                prepHTML = `
+                    <div class="lesson-box">
+                        <h3>🎮 Oyun Videoları İçin Özel Hazırlık</h3>
+                        <ul style="margin-left: 20px; line-height: 2;">
+                            <li><strong>Ekran Kaydı Ayarları:</strong> Ayarlar → Kontrol Merkezi → Ekran Kaydı ekle</li>
+                            <li><strong>Mikrofon: </strong> Ekran kaydı yaparken mikrofonu aç (uzun bas)</li>
+                            <li><strong>Bildirimler:</strong> Rahatsız Etmeyin modunu aç</li>
+                            <li><strong>Oyun seviyesi:</strong> Zor bir bölüm seç (ilginç olur)</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (userData.contentType === 'unboxing') {
+                prepHTML = `
+                    <div class="lesson-box">
+                        <h3>📦 Kutu Açılışı İçin Özel Hazırlık</h3>
+                        <ul style="margin-left: 20px; line-height: 2;">
+                            <li><strong>Kutuyu hazırla:</strong> Önceden açma, ilk açılışı kameraya çek</li>
+                            <li><strong>Düz yüzey:</strong> Masa üzerine beyaz veya tek renk örtü ser</li>
+                            <li><strong>Işık:</strong> Masanın üstüne ek lamba koy</li>
+                            <li><strong>Kamera açısı:</strong> Yukarıdan çekim yap (kuş bakışı)</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            if (prepHTML) {
+                prepDiv.innerHTML = prepHTML;
             }
         }
         
-        // Sayfa yüklendiğinde ilerlemeyi yükle
-        window.addEventListener('load', loadProgress);
+        // İçerik Türüne Göre Çekim Rehberi
+        function addContentSpecificShooting() {
+            const shootDiv = document.getElementById('contentSpecificShooting');
+            let shootHTML = '';
+            
+            if (userData.contentType === 'tutorial') {
+                shootHTML = `
+                    <div class="lesson-box">
+                        <h3>📚 Eğitim Videoları İçin Çekim İpuçları</h3>
+                        <ul style="margin-left: 20px; line-height: 2;">
+                            <li><strong>Close-up çekim:</strong> Detaylar net görünmeli</li>
+                            <li><strong>Yavaş hareket et:</strong> İzleyici takip etmeli</li>
+                            <li><strong>Her adımı sesli anlat:</strong> "Şimdi şunu yapıyorum..."</li>
+                            <li><strong>Tekrar göster:</strong> Önemli adımları farklı açıdan çek</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            if (shootHTML) {
+                shootDiv.innerHTML = shootHTML;
+            }
+        }
         
-        // Her adım değişiminde ilerlemeyi kaydet
-        const originalNextStep = nextStep;
-        nextStep = function() {
-            originalNextStep();
-            saveProgress();
-        };
+        // İçerik Türüne Göre Thumbnail Rehberi
+        function addContentSpecificThumbnail() {
+            const thumbDiv = document.getElementById('contentSpecificThumbnail');
+            let thumbHTML = '';
+            
+            const thumbnailExamples = {
+                gaming:  '🎮 MINECRAFT GİZLİ TAKTIK!  😱',
+                unboxing: '📦 YENİ OYUNCAK AÇILIŞI! 🎁',
+                vlog: '📹 GÜNÜMÜN EN ÇILGIN ANI! 😂',
+                tutorial: '📚 5 DAKİKADA ÖĞREN! ✅',
+                review: '⭐ EN İYİSİ Mİ? TEST ETTİM! ',
+                challenge: '🏆 30 SANİYE CHALLENGE! ⚡',
+                art:  '🎨 İNANILMAZ SONUÇ! 😍',
+                boardgame:  '🎲 EPİK OYUN! KİM KAZANDI?  ',
+                cooking: '🍳 SÜPER LEZZETLİ!  DENEME!  😋'
+            };
+            
+            const example = thumbnailExamples[userData.contentType] || '💡 İLGİNÇ İÇERİK! 🔥';
+            
+            thumbHTML = `
+                <div class="example-box">
+                    <h4>💡 Senin İçerik Türün İçin Thumbnail Örneği: </h4>
+                    <p style="font-size: 1.5em; font-weight: bold; color: #667eea; margin-top: 10px;">${example}</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;">Bu örnek gibi kısa, çarpıcı ve emojili thumbnail metni kullan! </p>
+                </div>
+            `;
+            
+            thumbDiv.innerHTML = thumbHTML;
+        }
         
-        const originalPrevStep = prevStep;
-        prevStep = function() {
-            originalPrevStep();
-            saveProgress();
-        };
+        // Başlık Karakter Sayacı
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleInput = document.getElementById('videoTitle');
+            if (titleInput) {
+                titleInput.addEventListener('input', function() {
+                    document.getElementById('titleCounter').textContent = this.value.length;
+                });
+            }
+        });
         
+        // Final Özeti Oluştur
+        function generateFinalSummary() {
+            document.getElementById('completionName').textContent = userData.name || 'Tebrikler';
+                        const summaryDiv = document.getElementById('finalSummary');
+            summaryDiv. innerHTML = `
+                <div class="data-item">
+                    <strong>👤 Adın:</strong> ${userData.name}
+                </div>
+                <div class="data-item">
+                    <strong>🎬 İçerik Türü:</strong> ${getContentTypeName(userData.contentType)}
+                </div>
+                <div class="data-item">
+                    <strong>🎯 Video Konun: </strong> ${userData.videoTopic}
+                </div>
+                <div class="data-item">
+                    <strong>📝 Video Açıklaması:</strong> ${userData.videoDescription}
+                </div>
+                <div class="data-item">
+                    <strong>🎬 Video Başlığı:</strong> ${userData.videoTitle}
+                </div>
+                <div class="data-item">
+                    <strong>🖼️ Thumbnail Metni:</strong> ${userData.thumbnailText}
+                </div>
+                <div class="data-item">
+                    <strong>#️⃣ Hashtag'ler:</strong> ${userData.videoHashtags}
+                </div>
+                <div class="data-item">
+                    <strong>📺 Kanal Adı:</strong> ${userData.channelName}
+                </div>
+                <div class="data-item">
+                    <strong>📅 Yükleme Sıklığı:</strong> ${getUploadFrequencyText(userData.uploadFrequency)}
+                </div>
+                <div class="data-item">
+                    <strong>🎯 1 Yıllık Hedef:</strong> ${userData.yearGoal} abone
+                </div>
+                <div class="data-item">
+                    <strong>🎨 Thumbnail Renkleri:</strong> ${userData.thumbnailColors}
+                </div>
+                <div class="data-item">
+                    <strong>🎵 Müzik Türü:</strong> ${getMusicTypeText(userData.musicType)}
+                </div>
+                <div class="data-item">
+                    <strong>🔒 Gizlilik Ayarı:</strong> ${getPrivacyText(userData.privacySettings)}
+                </div>
+            `;
+        }
+        
+        // İçerik Türü Adını Al
+        function getContentTypeName(type) {
+            const names = {
+                gaming: '🎮 Oyun Videoları',
+                unboxing: '📦 Kutu Açılışı',
+                vlog: '📹 Vlog',
+                tutorial: '📚 Eğitim/Öğretici',
+                review: '⭐ İnceleme',
+                challenge: '🏆 Challenge/Yarışma',
+                art: '🎨 Sanat/Yaratıcılık',
+                boardgame:  '🎲 Kutu Oyunu',
+                cooking:  '🍳 Yemek/Tarif',
+                other: '💡 Diğer'
+            };
+            return names[type] || type;
+        }
+        
+        // Yükleme Sıklığı Metni
+        function getUploadFrequencyText(freq) {
+            const texts = {
+                '1':  'Haftada 1 video',
+                '2': 'Haftada 2 video',
+                '3': 'Haftada 3+ video',
+                'biweekly': '2 haftada 1 video'
+            };
+            return texts[freq] || freq;
+        }
+        
+        // Müzik Türü Metni
+        function getMusicTypeText(type) {
+            const texts = {
+                energetic: 'Enerjik/Hareketli',
+                calm: 'Sakin/Rahatlatıcı',
+                funny: 'Komik/Eğlenceli',
+                epic: 'Epik/Heyecanlı',
+                none: 'Müzik yok'
+            };
+            return texts[type] || type;
+        }
+        
+        // Gizlilik Metni
+        function getPrivacyText(privacy) {
+            const texts = {
+                private: 'Özel (Sadece ben)',
+                unlisted: 'Gizli (Link ile)',
+                public: 'Genel (Herkes)'
+            };
+            return texts[privacy] || privacy;
+        }
+        
+        // PDF İndir Fonksiyonu
+        function downloadPlan() {
+            generateFinalSummary();
+            
+            // Basit HTML to PDF yaklaşımı - Tarayıcının print fonksiyonunu kullan
+            const printContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Video Üretim Planım</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            padding: 40px;
+                            line-height: 1.6;
+                        }
+                        h1 {
+                            color:  #FF0000;
+                            text-align: center;
+                            margin-bottom: 30px;
+                        }
+                        h2 {
+                            color:  #667eea;
+                            margin-top: 30px;
+                            border-bottom: 2px solid #667eea;
+                            padding-bottom: 10px;
+                        }
+                        .data-item {
+                            background: #f8f9fa;
+                            padding: 15px;
+                            margin:  10px 0;
+                            border-radius: 8px;
+                            border-left:  4px solid #667eea;
+                        }
+                        .data-item strong {
+                            color: #667eea;
+                        }
+                        .header {
+                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                            color: white;
+                            padding: 20px;
+                            border-radius: 10px;
+                            text-align: center;
+                            margin-bottom: 30px;
+                        }
+                        . section {
+                            margin-bottom: 30px;
+                        }
+                        ul {
+                            margin-left: 20px;
+                        }
+                        . checklist {
+                            background: #e8f5e9;
+                            padding: 15px;
+                            border-radius: 8px;
+                            margin:  10px 0;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h1>🎓 YouTube İçerik Üretimi Planım</h1>
+                        <p>Hazırlayan: ${userData.name}</p>
+                        <p>Tarih: ${new Date().toLocaleDateString('tr-TR')}</p>
+                    </div>
+                    
+                    <h2>📋 Proje Özeti</h2>
+                    <div class="data-item">
+                        <strong>🎬 İçerik Türü:</strong> ${getContentTypeName(userData.contentType)}
+                    </div>
+                    <div class="data-item">
+                        <strong>🎯 Video Konusu:</strong> ${userData.videoTopic}
+                    </div>
+                    <div class="data-item">
+                        <strong>📝 Açıklama:</strong> ${userData.videoDescription}
+                    </div>
+                    <div class="data-item">
+                        <strong>⏱️ Hedef Süre:</strong> ${userData.videoDuration} dakika
+                    </div>
+                    
+                    <h2>🎬 Senaryo</h2>
+                    <div class="section">
+                        <div class="data-item">
+                            <strong>🎬 Giriş Cümlesi:</strong><br>
+                            ${userData.introScript}
+                        </div>
+                        <div class="data-item">
+                            <strong>📋 Ana İçerik: </strong><br>
+                            <pre style="white-space: pre-wrap; font-family: inherit;">${userData.mainScript}</pre>
+                        </div>
+                        <div class="data-item">
+                            <strong>👋 Kapanış Cümlesi: </strong><br>
+                            ${userData.outroScript}
+                        </div>
+                    </div>
+                    
+                    <h2>✂️ Düzenleme Planı</h2>
+                    <div class="section">
+                        <div class="data-item">
+                            <strong>🎵 Müzik Türü:</strong> ${getMusicTypeText(userData.musicType)}
+                        </div>
+                        <div class="data-item">
+                            <strong>✂️ Kesilecek Kısımlar:</strong><br>
+                            <pre style="white-space: pre-wrap; font-family: inherit;">${userData.cutPlan}</pre>
+                        </div>
+                        <div class="data-item">
+                            <strong>📝 Eklenecek Yazılar:</strong><br>
+                            <pre style="white-space: pre-wrap; font-family: inherit;">${userData.textPlan}</pre>
+                        </div>
+                    </div>
+                    
+                    <h2>🖼️ Thumbnail Tasarımı</h2>
+                    <div class="section">
+                        <div class="data-item">
+                            <strong>🖼️ Görsel Türü:</strong> ${userData.thumbnailImage}
+                        </div>
+                        <div class="data-item">
+                            <strong>✍️ Thumbnail Metni:</strong> ${userData.thumbnailText}
+                        </div>
+                        <div class="data-item">
+                            <strong>🎨 Renkler:</strong> ${userData.thumbnailColors}
+                        </div>
+                        <div class="data-item">
+                            <strong>😀 Emojiler:</strong> ${userData. thumbnailEmojis}
+                        </div>
+                    </div>
+                    
+                    <h2>📝 Video Bilgileri</h2>
+                    <div class="section">
+                        <div class="data-item">
+                            <strong>🎬 Video Başlığı:</strong><br>
+                            ${userData. videoTitle}
+                        </div>
+                        <div class="data-item">
+                            <strong>📄 Video Açıklaması:</strong><br>
+                            <pre style="white-space: pre-wrap; font-family: inherit;">${userData.videoDescriptionText}</pre>
+                        </div>
+                        <div class="data-item">
+                            <strong>#️⃣ Hashtag'ler:</strong> ${userData.videoHashtags}
+                        </div>
+                    </div>
+                    
+                    <h2>📺 Kanal Bilgileri</h2>
+                    <div class="section">
+                        <div class="data-item">
+                            <strong>📺 Kanal Adı: </strong> ${userData.channelName}
+                        </div>
+                        <div class="data-item">
+                            <strong>🔒 Gizlilik Ayarı:</strong> ${getPrivacyText(userData.privacySettings)}
+                        </div>
+                        <div class="data-item">
+                            <strong>💬 Yorum Ayarı:</strong> ${userData. commentsSettings}
+                        </div>
+                    </div>
+                    
+                    <h2>📈 Büyüme Stratejisi</h2>
+                    <div class="section">
+                        <div class="data-item">
+                            <strong>📅 Yükleme Sıklığı:</strong> ${getUploadFrequencyText(userData.uploadFrequency)}
+                        </div>
+                        <div class="data-item">
+                            <strong>🎯 1 Yıllık Hedef:</strong> ${userData.yearGoal} abone
+                        </div>
+                        <div class="data-item">
+                            <strong>💡 Gelecek Video Fikirleri:</strong><br>
+                            <pre style="white-space: pre-wrap; font-family: inherit;">${userData.futureContent}</pre>
+                        </div>
+                    </div>
+                    
+                    <h2>✅ Çekim Öncesi Kontrol Listesi</h2>
+                    <div class="checklist">
+                        <ul>
+                            <li>☐ iPad şarjı %70+ dolu</li>
+                            <li>☐ Depolama alanı uygun (5+ GB)</li>
+                            <li>☐ İnternet bağlantısı test edildi</li>
+                            <li>☐ Kamera lensi temizlendi</li>
+                            <li>☐ Aydınlatma kontrol edildi</li>
+                            <li>☐ Arka plan düzenlendi</li>
+                            <li>☐ Senaryo hazır</li>
+                            <li>☐ Gerekli uygulamalar yüklendi (CapCut, Canva)</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>📱 Kullanılacak Uygulamalar</h2>
+                    <div class="section">
+                        <div class="data-item">
+                            <strong>✂️ Video Düzenleme: </strong> CapCut veya iMovie
+                        </div>
+                        <div class="data-item">
+                            <strong>🖼️ Thumbnail Tasarım:</strong> Canva
+                        </div>
+                        <div class="data-item">
+                            <strong>📺 Yükleme:</strong> YouTube uygulaması
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 50px; padding:  20px; background: #e8f5e9; border-radius: 10px; text-align: center;">
+                        <h3 style="color: #28a745;">🎉 Başarılar!</h3>
+                        <p>Bu planı takip ederek ilk profesyonel videonuzu oluşturabilirsiniz! </p>
+                        <p style="margin-top: 15px;"><strong>Unutmayın:</strong> Her büyük YouTuber bir zamanlar sizin gibi başladı.  🚀</p>
+                    </div>
+                    
+                    <div style="margin-top: 30px; text-align: center; color: #666; font-size: 0.9em;">
+                        <p>YouTube İçerik Üretimi Akademisi tarafından oluşturulmuştur. </p>
+                        <p>© ${new Date().getFullYear()} - Tüm hakları saklıdır.</p>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            // Yeni pencere aç ve yazdır
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            
+            // Sayfa yüklendikten sonra yazdırma dialogunu aç
+            printWindow.onload = function() {
+                printWindow.print();
+            };
+            
+            alert('📄 Video Üretim Planınız açıldı! Yazdırma penceresinde "PDF olarak kaydet" seçeneğini kullanabilirsiniz.');
+        }
+        
+        // Sayfa yüklendiğinde
+        window. addEventListener('load', function() {
+            loadProgress();
+            
+            // Son adıma geldiğinde özeti oluştur
+            const observer = new MutationObserver(function() {
+                if (currentStep === totalSteps) {
+                    generateFinalSummary();
+                }
+            });
+            
+            observer.observe(document.body, { childList: true, subtree: true });
+        });
+        
+        // Form değişikliklerini otomatik kaydet
+        document.addEventListener('change', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+                saveUserData();
+            }
+        });
+        
+        // Input değişikliklerini de kaydet (typing için)
+        document.addEventListener('input', function(e) {
+            if (e.target.tagName === 'INPUT' || e. target.tagName === 'TEXTAREA') {
+                // Debounce ile kaydet (her tuşta değil, 1 saniye sonra)
+                clearTimeout(window.saveTimeout);
+                window.saveTimeout = setTimeout(saveUserData, 1000);
+            }
+        });
+        
+        // İlk yükleme
         updateProgress();
     </script>
 </body>
